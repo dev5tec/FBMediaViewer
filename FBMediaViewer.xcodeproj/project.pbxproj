@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160A14F37F7A006564FE /* UIKit.framework */; };
+		4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160C14F37F7A006564FE /* Foundation.framework */; };
+		4C85160F14F37F7B006564FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160E14F37F7B006564FE /* CoreGraphics.framework */; };
+		4C85161514F37F7B006564FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C85161314F37F7B006564FE /* InfoPlist.strings */; };
+		4C85161714F37F7B006564FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C85161614F37F7B006564FE /* main.m */; };
+		4C85161B14F37F7B006564FE /* FBMediaViewerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C85161A14F37F7B006564FE /* FBMediaViewerAppDelegate.m */; };
+		4C85161E14F37F7B006564FE /* FBMediaViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C85161D14F37F7B006564FE /* FBMediaViewerViewController.m */; };
+		4C85162114F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */; };
+		4C85162414F37F7B006564FE /* FBMediaViewerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C85160614F37F7A006564FE /* FBMediaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBMediaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C85160A14F37F7A006564FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4C85160C14F37F7A006564FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C85160E14F37F7B006564FE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4C85161214F37F7B006564FE /* FBMediaViewer-Info.plist */ = {isa = PBXFileReference; path = "FBMediaViewer-Info.plist"; sourceTree = "<group>"; };
+		4C85161414F37F7B006564FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C85161614F37F7B006564FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C85161814F37F7B006564FE /* FBMediaViewer-Prefix.pch */ = {isa = PBXFileReference; path = "FBMediaViewer-Prefix.pch"; sourceTree = "<group>"; };
+		4C85161914F37F7B006564FE /* FBMediaViewerAppDelegate.h */ = {isa = PBXFileReference; path = FBMediaViewerAppDelegate.h; sourceTree = "<group>"; };
+		4C85161A14F37F7B006564FE /* FBMediaViewerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerAppDelegate.m; sourceTree = "<group>"; };
+		4C85161C14F37F7B006564FE /* FBMediaViewerViewController.h */ = {isa = PBXFileReference; path = FBMediaViewerViewController.h; sourceTree = "<group>"; };
+		4C85161D14F37F7B006564FE /* FBMediaViewerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerViewController.m; sourceTree = "<group>"; };
+		4C85162014F37F7B006564FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBMediaViewerViewController_iPhone.xib; sourceTree = "<group>"; };
+		4C85162314F37F7B006564FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBMediaViewerViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C85160314F37F7A006564FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */,
+				4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */,
+				4C85160F14F37F7B006564FE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C8515FB14F37F7A006564FE = {
+			isa = PBXGroup;
+			children = (
+				4C85161014F37F7B006564FE /* FBMediaViewer */,
+				4C85160914F37F7A006564FE /* Frameworks */,
+				4C85160714F37F7A006564FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C85160714F37F7A006564FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C85160614F37F7A006564FE /* FBMediaViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C85160914F37F7A006564FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C85160A14F37F7A006564FE /* UIKit.framework */,
+				4C85160C14F37F7A006564FE /* Foundation.framework */,
+				4C85160E14F37F7B006564FE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C85161014F37F7B006564FE /* FBMediaViewer */ = {
+			isa = PBXGroup;
+			children = (
+				4C85161914F37F7B006564FE /* FBMediaViewerAppDelegate.h */,
+				4C85161A14F37F7B006564FE /* FBMediaViewerAppDelegate.m */,
+				4C85161C14F37F7B006564FE /* FBMediaViewerViewController.h */,
+				4C85161D14F37F7B006564FE /* FBMediaViewerViewController.m */,
+				4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */,
+				4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */,
+				4C85161114F37F7B006564FE /* Supporting Files */,
+			);
+			path = FBMediaViewer;
+			sourceTree = "<group>";
+		};
+		4C85161114F37F7B006564FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C85161214F37F7B006564FE /* FBMediaViewer-Info.plist */,
+				4C85161314F37F7B006564FE /* InfoPlist.strings */,
+				4C85161614F37F7B006564FE /* main.m */,
+				4C85161814F37F7B006564FE /* FBMediaViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C85160514F37F7A006564FE /* FBMediaViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C85162714F37F7B006564FE /* Build configuration list for PBXNativeTarget "FBMediaViewer" */;
+			buildPhases = (
+				4C85160214F37F7A006564FE /* Sources */,
+				4C85160314F37F7A006564FE /* Frameworks */,
+				4C85160414F37F7A006564FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FBMediaViewer;
+			productName = FBMediaViewer;
+			productReference = 4C85160614F37F7A006564FE /* FBMediaViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C8515FD14F37F7A006564FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FBMediaViewer;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 4C85160014F37F7A006564FE /* Build configuration list for PBXProject "FBMediaViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4C8515FB14F37F7A006564FE;
+			productRefGroup = 4C85160714F37F7A006564FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C85160514F37F7A006564FE /* FBMediaViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C85160414F37F7A006564FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C85161514F37F7B006564FE /* InfoPlist.strings in Resources */,
+				4C85162114F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib in Resources */,
+				4C85162414F37F7B006564FE /* FBMediaViewerViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C85160214F37F7A006564FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C85161714F37F7B006564FE /* main.m in Sources */,
+				4C85161B14F37F7B006564FE /* FBMediaViewerAppDelegate.m in Sources */,
+				4C85161E14F37F7B006564FE /* FBMediaViewerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C85161314F37F7B006564FE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C85161414F37F7B006564FE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C85162014F37F7B006564FE /* en */,
+			);
+			name = FBMediaViewerViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C85162314F37F7B006564FE /* en */,
+			);
+			name = FBMediaViewerViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C85162514F37F7B006564FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C85162614F37F7B006564FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C85162814F37F7B006564FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FBMediaViewer/FBMediaViewer-Prefix.pch";
+				INFOPLIST_FILE = "FBMediaViewer/FBMediaViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4C85162914F37F7B006564FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FBMediaViewer/FBMediaViewer-Prefix.pch";
+				INFOPLIST_FILE = "FBMediaViewer/FBMediaViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C85160014F37F7A006564FE /* Build configuration list for PBXProject "FBMediaViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C85162514F37F7B006564FE /* Debug */,
+				4C85162614F37F7B006564FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C85162714F37F7B006564FE /* Build configuration list for PBXNativeTarget "FBMediaViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C85162814F37F7B006564FE /* Debug */,
+				4C85162914F37F7B006564FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C8515FD14F37F7A006564FE /* Project object */;
+}
