@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C280F4314F4B46400DB9916 /* FBMediaViewerInnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F4214F4B46400DB9916 /* FBMediaViewerInnerView.m */; };
+		4C280F4314F4B46400DB9916 /* FBMediaViewerRendererWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */; };
 		4C280F4E14F4C9B700DB9916 /* image01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C280F4614F4C9B700DB9916 /* image01.jpg */; };
 		4C795C0B14F5DD38003EDA40 /* sample.doc in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0814F5DD38003EDA40 /* sample.doc */; };
 		4C795C0C14F5DD38003EDA40 /* sample.xls in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0914F5DD38003EDA40 /* sample.xls */; };
@@ -19,6 +19,8 @@
 		4C795C8914F622B1003EDA40 /* image06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C8314F622B0003EDA40 /* image06.jpg */; };
 		4C795C8A14F622B1003EDA40 /* image07.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C8414F622B0003EDA40 /* image07.jpg */; };
 		4C795C8B14F622B1003EDA40 /* image08.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C8514F622B1003EDA40 /* image08.jpg */; };
+		4C795CBF14F72F31003EDA40 /* FBMediaViewerInnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C795CBE14F72F31003EDA40 /* FBMediaViewerInnerView.m */; };
+		4C795CE314F769D9003EDA40 /* FBGenericMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C795CE214F769D8003EDA40 /* FBGenericMediaItem.m */; };
 		4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160A14F37F7A006564FE /* UIKit.framework */; };
 		4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160C14F37F7A006564FE /* Foundation.framework */; };
 		4C85160F14F37F7B006564FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160E14F37F7B006564FE /* CoreGraphics.framework */; };
@@ -32,8 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C280F4114F4B46400DB9916 /* FBMediaViewerInnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerInnerView.h; sourceTree = "<group>"; };
-		4C280F4214F4B46400DB9916 /* FBMediaViewerInnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerInnerView.m; sourceTree = "<group>"; };
+		4C280F4114F4B46400DB9916 /* FBMediaViewerRendererWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererWebView.h; sourceTree = "<group>"; };
+		4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererWebView.m; sourceTree = "<group>"; };
 		4C280F4614F4C9B700DB9916 /* image01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image01.jpg; sourceTree = "<group>"; };
 		4C795C0814F5DD38003EDA40 /* sample.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.doc; sourceTree = "<group>"; };
 		4C795C0914F5DD38003EDA40 /* sample.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.xls; sourceTree = "<group>"; };
@@ -45,6 +47,12 @@
 		4C795C8314F622B0003EDA40 /* image06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image06.jpg; sourceTree = "<group>"; };
 		4C795C8414F622B0003EDA40 /* image07.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image07.jpg; sourceTree = "<group>"; };
 		4C795C8514F622B1003EDA40 /* image08.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image08.jpg; sourceTree = "<group>"; };
+		4C795CBB14F72E25003EDA40 /* FBMediaViewerRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRenderer.h; sourceTree = "<group>"; };
+		4C795CBD14F72F31003EDA40 /* FBMediaViewerInnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerInnerView.h; sourceTree = "<group>"; };
+		4C795CBE14F72F31003EDA40 /* FBMediaViewerInnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerInnerView.m; sourceTree = "<group>"; };
+		4C795CDB14F763AB003EDA40 /* FBMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaItem.h; sourceTree = "<group>"; };
+		4C795CE114F769D8003EDA40 /* FBGenericMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBGenericMediaItem.h; sourceTree = "<group>"; };
+		4C795CE214F769D8003EDA40 /* FBGenericMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBGenericMediaItem.m; sourceTree = "<group>"; };
 		4C85160614F37F7A006564FE /* FBMediaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBMediaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C85160A14F37F7A006564FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C85160C14F37F7A006564FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +100,24 @@
 				4C795C0A14F5DD38003EDA40 /* sample.mov */,
 			);
 			name = "Sample Images";
+			sourceTree = "<group>";
+		};
+		4C795CBA14F72DCE003EDA40 /* Inner Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C280F4114F4B46400DB9916 /* FBMediaViewerRendererWebView.h */,
+				4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */,
+			);
+			name = "Inner Views";
+			sourceTree = "<group>";
+		};
+		4C795CE414F76E23003EDA40 /* Media Items */ = {
+			isa = PBXGroup;
+			children = (
+				4C795CE114F769D8003EDA40 /* FBGenericMediaItem.h */,
+				4C795CE214F769D8003EDA40 /* FBGenericMediaItem.m */,
+			);
+			name = "Media Items";
 			sourceTree = "<group>";
 		};
 		4C8515FB14F37F7A006564FE = {
@@ -154,8 +180,12 @@
 			children = (
 				4C85162B14F37FFE006564FE /* FBMediaViewerView.h */,
 				4C85162C14F37FFE006564FE /* FBMediaViewerView.m */,
-				4C280F4114F4B46400DB9916 /* FBMediaViewerInnerView.h */,
-				4C280F4214F4B46400DB9916 /* FBMediaViewerInnerView.m */,
+				4C795CBD14F72F31003EDA40 /* FBMediaViewerInnerView.h */,
+				4C795CBE14F72F31003EDA40 /* FBMediaViewerInnerView.m */,
+				4C795CDB14F763AB003EDA40 /* FBMediaItem.h */,
+				4C795CBB14F72E25003EDA40 /* FBMediaViewerRenderer.h */,
+				4C795CE414F76E23003EDA40 /* Media Items */,
+				4C795CBA14F72DCE003EDA40 /* Inner Views */,
 			);
 			name = FBMediaViewer;
 			sourceTree = "<group>";
@@ -239,7 +269,9 @@
 				4C85161B14F37F7B006564FE /* FBMediaViewerAppDelegate.m in Sources */,
 				4C85161E14F37F7B006564FE /* FBMediaViewerViewController.m in Sources */,
 				4C85162D14F37FFE006564FE /* FBMediaViewerView.m in Sources */,
-				4C280F4314F4B46400DB9916 /* FBMediaViewerInnerView.m in Sources */,
+				4C280F4314F4B46400DB9916 /* FBMediaViewerRendererWebView.m in Sources */,
+				4C795CBF14F72F31003EDA40 /* FBMediaViewerInnerView.m in Sources */,
+				4C795CE314F769D9003EDA40 /* FBGenericMediaItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

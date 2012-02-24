@@ -2,52 +2,78 @@
 //  FBMediaViewerInnerView.m
 //  FBMediaViewer
 //
-//  Created by Hiroshi Hashiguchi on 2/22/12.
+//  Created by Hiroshi Hashiguchi on 2/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "FBMediaViewerInnerView.h"
+#import "FBMediaItem.h"
+
+// Inner Views
+#import "FBMediaViewerRendererWebView.h"
+
+@interface FBMediaViewerInnerView()
+@property (nonatomic, strong) UIView <FBMediaViewerRenderer> *renderer;
+@end
+
 
 @implementation FBMediaViewerInnerView
-@synthesize url = url_;
+
+// public
+@synthesize mediaItem;
+
+// private
+@synthesize renderer;
+
+
+#pragma mark -
+#pragma mark Basics
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.scalesPageToFit = YES;
-        self.delegate = self;
+        self.backgroundColor = [UIColor redColor];
+        self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:frame];
+        self.renderer.autoresizingMask =
+            UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        [self addSubview:self.renderer];
     }
     return self;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+#pragma mark -
+#pragma mark Properites
+- (void)setFrame:(CGRect)frame
 {
-    if (self.url) {
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             self.alpha = 1.0;
-                         }];
-    } else {
-        self.alpha = 0.0;
-    }
+    [super setFrame:frame];
+    frame.origin = CGPointZero;
+    self.renderer.frame = frame;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
-- (void)setUrl:(NSURL *)url
+
+#pragma mark -
+#pragma mark API
+
+- (void)load
 {
-    url_ = url;
-    self.alpha = 0.0;
-    
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
-    [self loadRequest:request];
+    [self.mediaItem
+     loadWithLoading:^(NSUInteger loadedSize) {
+         NSLog(@"%s|loadedSize=%d", __PRETTY_FUNCTION__, loadedSize);
+     }
+     completion:^(BOOL canceled, id <FBMediaItem> item) {
+         [self.renderer renderContentOfURL:item.localFileURL];
+     }
+     failed:^{
+         NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"failed");
+     }];
 }
+
+- (void)cancel
+{
+    NSLog(@"%s|%@", __PRETTY_FUNCTION__, nil);
+}
+
 
 @end

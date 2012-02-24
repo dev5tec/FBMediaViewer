@@ -10,10 +10,11 @@
 #import "FBMediaViewerInnerView.h"
 
 @class FBMediaViewerView;
+@protocol FBMediaItem;
 
 @protocol FBMediaViewerViewDataSource <NSObject>
 - (NSInteger)numberOfItemsInMediaViewerView:(FBMediaViewerView*)mediaViewerView;
-- (NSURL*)mediaViewerView:(FBMediaViewerView*)mediaViewerView itemAtIndex:(NSUInteger)index; 
+- (id <FBMediaItem>)mediaViewerView:(FBMediaViewerView*)mediaViewerView itemAtIndex:(NSUInteger)index; 
 @end
 
 

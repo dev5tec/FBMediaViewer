@@ -60,11 +60,12 @@
 - (void)_setItemAtIndex:(NSInteger)index toInnerView:(FBMediaViewerInnerView*)innerView
 {
 	if (index < 0 || [self _numberOfItems] <= index) {
-		innerView.url = nil;
+		innerView.mediaItem = nil;
 		return;
 	}
 	
-	innerView.url = [self.dataSource mediaViewerView:self itemAtIndex:index];	
+	innerView.mediaItem = [self.dataSource mediaViewerView:self itemAtIndex:index];
+    [innerView load];
 }
 
 

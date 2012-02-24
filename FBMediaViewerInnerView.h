@@ -2,15 +2,21 @@
 //  FBMediaViewerInnerView.h
 //  FBMediaViewer
 //
-//  Created by Hiroshi Hashiguchi on 2/22/12.
+//  Created by Hiroshi Hashiguchi on 2/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "FBMediaViewerRenderer.h"
 
-@interface FBMediaViewerInnerView : UIWebView <UIWebViewDelegate>
+@protocol FBMediaItem;
+@interface FBMediaViewerInnerView : UIView
 
-// Properties (public)
-@property (nonatomic, strong) NSURL* url;
+// API (Properties)
+@property (nonatomic, strong) id <FBMediaItem> mediaItem;
+
+// API
+- (void)load;
+- (void)cancel;
 
 @end

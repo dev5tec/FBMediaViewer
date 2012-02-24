@@ -7,6 +7,7 @@
 //
 
 #import "FBMediaViewerViewController.h"
+#import "FBGenericMediaItem.h"
 
 @interface FBMediaViewerViewController ()
 
@@ -23,14 +24,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    NSURL* url;
+    
     self.items = [NSMutableArray array];
     for (int i=0; i < 4; i++) {
-        [self.items addObject:[[NSBundle mainBundle] URLForResource:
-                               [NSString stringWithFormat:@"image%02d.jpg", i+1] withExtension:nil]];
+        url = [[NSBundle mainBundle] URLForResource:
+               [NSString stringWithFormat:@"image%02d.jpg", i+1] withExtension:nil];
+        [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
     }
-    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.doc" withExtension:nil]];
-    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.xls" withExtension:nil]];
+    url = [[NSBundle mainBundle] URLForResource:@"sample.doc" withExtension:nil];
+    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
+
+    url = [[NSBundle mainBundle] URLForResource:@"sample.xls" withExtension:nil];
+    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
+    
 //    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil]];
+//    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
+
     [self.mediaViewerView reloadData];
 }
 
