@@ -7,31 +7,33 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBMediaViewerInnerView.h"
 
 @class FBMediaViewerView;
-@protocol FBMediaItem;
+@protocol FBMediaViewerItem;
 
+//------------------------------------------------------------------------------
 @protocol FBMediaViewerViewDataSource <NSObject>
 - (NSInteger)numberOfItemsInMediaViewerView:(FBMediaViewerView*)mediaViewerView;
-- (id <FBMediaItem>)mediaViewerView:(FBMediaViewerView*)mediaViewerView itemAtIndex:(NSUInteger)index; 
+- (id <FBMediaViewerItem>)mediaViewerView:(FBMediaViewerView*)mediaViewerView itemAtIndex:(NSUInteger)index; 
 @end
 
-
+//------------------------------------------------------------------------------
 @protocol FBImageViewerViewDelegate <NSObject>
 @optional
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView willMoveFromIndex:(NSUInteger)index;
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didMoveToIndex:(NSUInteger)index;
 - (void)mediaViewerViewDidStopSlideShow:(FBMediaViewerView*)mediaViwerView;
-
 @end
 
-   
+//------------------------------------------------------------------------------
+
+@protocol FBMediaViewerContentLoader;
 @interface FBMediaViewerView : UIView <UIScrollViewDelegate>
 
 // Properties (Public)
 @property (nonatomic, assign) IBOutlet id <FBImageViewerViewDelegate> delegate;
 @property (nonatomic, assign) IBOutlet id <FBMediaViewerViewDataSource> dataSource;
+@property (nonatomic, assign) IBOutlet id <FBMediaViewerContentLoader> contentLoader;
 @property (nonatomic, assign) NSInteger currentIndex;	// start with 0
 
 // API

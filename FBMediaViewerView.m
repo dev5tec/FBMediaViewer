@@ -7,6 +7,7 @@
 //
 
 #import "FBMediaViewerView.h"
+#import "FBMediaViewerInnerView.h"
 
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_SPACING_WIDTH	40
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_SPACING_HEIGHT	0
@@ -35,6 +36,7 @@
 @synthesize currentIndex;
 @synthesize dataSource;
 @synthesize delegate;
+@synthesize contentLoader;
 
 // private
 @synthesize baseScrollView;
@@ -60,11 +62,11 @@
 - (void)_setItemAtIndex:(NSInteger)index toInnerView:(FBMediaViewerInnerView*)innerView
 {
 	if (index < 0 || [self _numberOfItems] <= index) {
-		innerView.mediaItem = nil;
+		innerView.mediaViewerItem = nil;
 		return;
 	}
 	
-	innerView.mediaItem = [self.dataSource mediaViewerView:self itemAtIndex:index];
+	innerView.mediaViewerItem = [self.dataSource mediaViewerView:self itemAtIndex:index];
     [innerView load];
 }
 
@@ -165,10 +167,11 @@
 	for (int i=0; i < FB_MEDIA_VIEWER_VIEW_NUMBER_OF_INNER_VIEW; i++) {
 		
 		FBMediaViewerInnerView* innerView =
-            [[FBMediaViewerInnerView alloc] initWithFrame:innerViewFrame];
+            [[FBMediaViewerInnerView alloc] initWithMediaViewerView:self
+                                                              frame:innerViewFrame];
 		innerView.clipsToBounds = YES;
 		innerView.backgroundColor = self.backgroundColor;
-		
+
 		[self.baseScrollView addSubview:innerView];
 		[self.innerViews addObject:innerView];
 	}
@@ -236,6 +239,7 @@
     // public
     self.dataSource = nil;
     self.delegate = nil;
+    self.contentLoader = nil;
 
     // private
     self.baseScrollView = nil;

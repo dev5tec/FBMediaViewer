@@ -9,11 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "FBMediaViewerRenderer.h"
 
-@protocol FBMediaItem;
+@protocol FBMediaViewerItem;
+@class FBMediaViewerView;
+
 @interface FBMediaViewerInnerView : UIView
 
 // API (Properties)
-@property (nonatomic, strong) id <FBMediaItem> mediaItem;
+@property (nonatomic, strong) id <FBMediaViewerItem> mediaViewerItem;
+@property (nonatomic, assign, readonly) FBMediaViewerView* mediaViewerView;
+
+// API (Factroies)
+- (id)initWithMediaViewerView:(FBMediaViewerView*)view frame:(CGRect)frame;
+
 
 // API
 - (void)load;

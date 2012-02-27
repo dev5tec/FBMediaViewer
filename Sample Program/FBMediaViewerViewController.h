@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FBMediaViewerView.h"
+#import "FBMediaViewerContentLoader.h"
 
 @interface FBMediaViewerViewController : UIViewController <FBMediaViewerViewDataSource, FBImageViewerViewDelegate>
 @property (unsafe_unretained, nonatomic) IBOutlet FBMediaViewerView *mediaViewerView;
+
+@property (nonatomic, strong) id <FBMediaViewerContentLoader> contentLoader;
 
 @end
