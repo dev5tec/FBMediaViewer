@@ -24,7 +24,7 @@
 
 // public
 @synthesize mediaViewerView;
-@synthesize mediaViewerItem;
+@synthesize mediaViewerItem = mediaViewerView_;
 
 // private
 @synthesize renderer;
@@ -58,24 +58,30 @@
     self.renderer.frame = frame;
 }
 
+- (void)setMediaViewerItem:(id<FBMediaViewerItem>)mediaViewerItem
+{
+    mediaViewerView_ = mediaViewerItem;
+    self.renderer.hidden = (mediaViewerView_ == nil);
+}
+
 
 #pragma mark -
 #pragma mark API
 
-- (void)load
+- (void)loadWithForceReload:(BOOL)forceReload
 {
     [self.mediaViewerView.contentLoader
      loadWithMediaViewerItem:self.mediaViewerItem
-                 forceReload:NO
-                     loading:^(NSUInteger loadedSize) {
-
-                     }
-                  completion:^(BOOL canceled) {
-                      [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
-                  }
-                      failed:^{
-
-                      }];
+     forceReload:forceReload
+     loading:^(NSUInteger loadedSize) {
+         
+     }
+     completion:^(BOOL canceled) {
+         [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
+     }
+     failed:^{
+         
+     }];
 }
 
 - (void)cancel

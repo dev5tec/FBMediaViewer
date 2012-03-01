@@ -33,7 +33,7 @@
 @implementation FBMediaViewerView
 
 // public
-@synthesize currentIndex;
+@synthesize currentIndex = currentIndex_;
 @synthesize dataSource;
 @synthesize delegate;
 @synthesize contentLoader;
@@ -67,7 +67,7 @@
 	}
 	
 	innerView.mediaViewerItem = [self.dataSource mediaViewerView:self itemAtIndex:index];
-    [innerView load];
+    [innerView loadWithForceReload:NO];
 }
 
 
@@ -214,7 +214,10 @@
 							 animated:animated];
 }
 
-
+- (FBMediaViewerInnerView*)_currentInnerView
+{
+    return [self.innerViews objectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW];
+}
 
 #pragma mark -
 #pragma mark Basics
@@ -314,11 +317,11 @@
 //		FBMediaViewerInnerView* currentInnerlView =
 //            [self.innerViews objectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW];
 //		[self _resetZoomScrollView:currentInnerlView];
-        
-        if ([self.delegate respondsToSelector:@selector(mediaViwerView:willMoveFromIndex:)]) {
+                
+        if ([self.delegate respondsToSelector:@selector(mediaViewerView:willMoveFromIndex:)]) {
             [self.delegate mediaViewerView:self willMoveFromIndex:self.currentIndex];
         }
-        
+
 		if (delta > 0) {
 			self.currentIndex++;
 			self.contentOffsetIndex++;
@@ -329,7 +332,6 @@
             self.contentOffsetIndex--;
             [self _scrollToLeft];
 		}
-		
 	}
 	
 }
@@ -337,6 +339,17 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
 	self.animatingWithScrolling = NO;
+}
+
+
+#pragma mark -
+#pragma mark Properties
+- (void)setCurrentIndex:(NSInteger)currentIndex
+{
+    currentIndex_ = currentIndex;
+    if ([self.delegate respondsToSelector:@selector(mediaViewerView:didMoveToIndex:)]) {
+        [self.delegate mediaViewerView:self didMoveToIndex:currentIndex];
+    }
 }
 
 
@@ -359,7 +372,12 @@
 	}
 }
 
-- (void)setCurrentIndex:(NSInteger)index animated:(BOOL)animated
+- (void)reloadCurrentItem
+{
+    [[self _currentInnerView] loadWithForceReload:YES];
+}
+
+- (void)moveToIndex:(NSInteger)index animated:(BOOL)animated
 {
 	NSInteger numberOfItems = [self _numberOfItems];
     
@@ -371,10 +389,6 @@
 		index = 0;
 	} else if (index >= numberOfItems) {
 		index = numberOfItems - 1;
-	}
-    
-    if (index == self.currentIndex) {
-		return;
 	}
     
 	self.currentIndex = index;
@@ -413,6 +427,11 @@
 	self.contentOffsetIndex++;
 	[self _scrollToRight];
 	[self _movePage:animated];
+}
+
+- (id <FBMediaViewerItem>)currentItem
+{
+    return [self _currentInnerView].mediaViewerItem;
 }
 
 

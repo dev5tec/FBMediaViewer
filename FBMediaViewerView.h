@@ -22,7 +22,7 @@
 @optional
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView willMoveFromIndex:(NSUInteger)index;
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didMoveToIndex:(NSUInteger)index;
-- (void)mediaViewerViewDidStopSlideShow:(FBMediaViewerView*)mediaViwerView;
+- (void)mediaViewerViewDidStopSlideShow:(FBMediaViewerView*)mediaViewerView;
 @end
 
 //------------------------------------------------------------------------------
@@ -38,8 +38,11 @@
 
 // API
 - (void)reloadData;
-- (void)setCurrentIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)moveToIndex:(NSInteger)index animated:(BOOL)animated;
 
+- (void)reloadCurrentItem;
+- (id <FBMediaViewerItem>)currentItem;
+   
 - (void)moveToPreviousItemAnimated:(BOOL)animated;
 - (void)moveToNextItemAnimated:(BOOL)animated;
 

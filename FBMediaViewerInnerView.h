@@ -23,7 +23,7 @@
 
 
 // API
-- (void)load;
+- (void)loadWithForceReload:(BOOL)forceReload;
 - (void)cancel;
 
 @end

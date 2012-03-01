@@ -22,10 +22,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         self.alpha = 1.0;
-                     }];
+//    [UIView animateWithDuration:0.2
+//                     animations:^{
+//                         self.alpha = 1.0;
+//                     }];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -42,7 +42,7 @@
 
 - (void)renderContentOfURL:(NSURL*)url
 {
-    self.alpha = 0.0;
+//    self.alpha = 0.0;
     
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [self loadRequest:request];
