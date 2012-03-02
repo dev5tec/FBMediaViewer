@@ -6,6 +6,7 @@
 #import "FBGenericMediaViewerItem.h"
 
 @implementation FBGenericMediaViewerItem
+@synthesize name;
 @synthesize contentURL;
 @synthesize localFileURL;
 @synthesize size;

@@ -11,10 +11,11 @@
 @protocol FBMediaViewerItem <NSObject>
 
 // API (Properties)
-@property (nonatomic, retain) NSURL* contentURL;
-@property (nonatomic, retain) NSURL* localFileURL;
+@property (nonatomic, strong, readonly) NSString* name; 
+@property (nonatomic, strong) NSURL* contentURL;
+@property (nonatomic, strong) NSURL* localFileURL;
 @property (nonatomic, assign) NSUInteger size;
-@property (nonatomic, retain) NSDate* modifiedDate;
+@property (nonatomic, strong) NSDate* modifiedDate;
 
 
 @end

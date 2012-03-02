@@ -10,13 +10,18 @@
 #import "FBMediaViewerView.h"
 #import "FBMediaViewerItem.h"
 #import "FBMediaViewerContentLoader.h"
+#import "FBMediaViewerLoadingView.h"
 
 // Inner Views
 #import "FBMediaViewerRendererWebView.h"
+#import "FBMediaViewerGenericLoadingView.h"
+
+//--
 
 @interface FBMediaViewerInnerView()
 @property (nonatomic, assign) FBMediaViewerView* mediaViewerView;
 @property (nonatomic, strong) UIView <FBMediaViewerRenderer> *renderer;
+@property (nonatomic, strong) UIView <FBMediaViewerLoadingView> *loadinDialogView;
 @end
 
 
@@ -28,6 +33,7 @@
 
 // private
 @synthesize renderer;
+@synthesize loadinDialogView;
 
 
 #pragma mark -
@@ -39,11 +45,17 @@
     if (self) {
         self.mediaViewerView = view;
         self.backgroundColor = [UIColor redColor];
-        self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:frame];
+        // TODO
+        self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:CGRectZero];
         self.renderer.autoresizingMask =
             UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
         [self addSubview:self.renderer];
+        
+        self.loadinDialogView = [FBMediaViewerGenericLoadingView loadingView];
+        self.loadinDialogView.hidden = YES;
+        [self addSubview:self.loadinDialogView];
+        
+        self.frame = frame;
     }
     return self;
 }
@@ -56,6 +68,7 @@
     [super setFrame:frame];
     frame.origin = CGPointZero;
     self.renderer.frame = frame;
+    [self.loadinDialogView layoutInFrame:frame];
 }
 
 - (void)setMediaViewerItem:(id<FBMediaViewerItem>)mediaViewerItem
@@ -70,13 +83,17 @@
 
 - (void)loadWithForceReload:(BOOL)forceReload
 {
+    self.loadinDialogView.title = self.mediaViewerItem.name;
+    self.loadinDialogView.hidden = NO;
+
     [self.mediaViewerView.contentLoader
      loadWithMediaViewerItem:self.mediaViewerItem
      forceReload:forceReload
      loading:^(NSUInteger loadedSize) {
-         
+         self.loadinDialogView.progress = (CGFloat)loadedSize / (CGFloat)self.mediaViewerItem.size;
      }
      completion:^(BOOL canceled) {
+         self.loadinDialogView.hidden = YES;
          [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
      }
      failed:^{

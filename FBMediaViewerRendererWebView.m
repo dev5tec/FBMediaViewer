@@ -22,11 +22,18 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    NSLog(@"%s|%@", __PRETTY_FUNCTION__, nil);
 //    [UIView animateWithDuration:0.2
 //                     animations:^{
 //                         self.alpha = 1.0;
 //                     }];
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"%s|%@", __PRETTY_FUNCTION__, error);
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

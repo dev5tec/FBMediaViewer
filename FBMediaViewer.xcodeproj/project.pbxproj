@@ -32,6 +32,8 @@
 		4C85162114F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */; };
 		4C85162414F37F7B006564FE /* FBMediaViewerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */; };
 		4C85162D14F37FFE006564FE /* FBMediaViewerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C85162C14F37FFE006564FE /* FBMediaViewerView.m */; };
+		4CCF59A91500901800BF9F12 /* FBMediaViewerGenericLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF59A81500901800BF9F12 /* FBMediaViewerGenericLoadingView.m */; };
+		4CCF59B115009CFE00BF9F12 /* FBMediaViewerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF59AF15009CFE00BF9F12 /* FBMediaViewerProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,11 @@
 		4C85162314F37F7B006564FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBMediaViewerViewController_iPad.xib; sourceTree = "<group>"; };
 		4C85162B14F37FFE006564FE /* FBMediaViewerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerView.h; sourceTree = "<group>"; };
 		4C85162C14F37FFE006564FE /* FBMediaViewerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerView.m; sourceTree = "<group>"; };
+		4CCF59A515008F1F00BF9F12 /* FBMediaViewerLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerLoadingView.h; sourceTree = "<group>"; };
+		4CCF59A71500901800BF9F12 /* FBMediaViewerGenericLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerGenericLoadingView.h; sourceTree = "<group>"; };
+		4CCF59A81500901800BF9F12 /* FBMediaViewerGenericLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerGenericLoadingView.m; sourceTree = "<group>"; };
+		4CCF59AF15009CFE00BF9F12 /* FBMediaViewerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerProgressView.m; sourceTree = "<group>"; };
+		4CCF59B015009CFE00BF9F12 /* FBMediaViewerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerProgressView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,12 +204,25 @@
 				4C795CBE14F72F31003EDA40 /* FBMediaViewerInnerView.m */,
 				4C795CDB14F763AB003EDA40 /* FBMediaViewerItem.h */,
 				4C795CBB14F72E25003EDA40 /* FBMediaViewerRenderer.h */,
+				4CCF59A515008F1F00BF9F12 /* FBMediaViewerLoadingView.h */,
 				4C1F647E14FB24D4005E58EF /* FBMediaViewerContentLoader.h */,
 				4C795CE414F76E23003EDA40 /* Media Items */,
 				4C795CBA14F72DCE003EDA40 /* Inner Views */,
+				4CCF59B215009D1500BF9F12 /* Loading Views */,
 				4C1F647F14FB2709005E58EF /* Downloaders */,
 			);
 			name = FBMediaViewer;
+			sourceTree = "<group>";
+		};
+		4CCF59B215009D1500BF9F12 /* Loading Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CCF59A71500901800BF9F12 /* FBMediaViewerGenericLoadingView.h */,
+				4CCF59A81500901800BF9F12 /* FBMediaViewerGenericLoadingView.m */,
+				4CCF59B015009CFE00BF9F12 /* FBMediaViewerProgressView.h */,
+				4CCF59AF15009CFE00BF9F12 /* FBMediaViewerProgressView.m */,
+			);
+			name = "Loading Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +308,8 @@
 				4C795CBF14F72F31003EDA40 /* FBMediaViewerInnerView.m in Sources */,
 				4C795CE314F769D9003EDA40 /* FBGenericMediaViewerItem.m in Sources */,
 				4C1F648214FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m in Sources */,
+				4CCF59A91500901800BF9F12 /* FBMediaViewerGenericLoadingView.m in Sources */,
+				4CCF59B115009CFE00BF9F12 /* FBMediaViewerProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
