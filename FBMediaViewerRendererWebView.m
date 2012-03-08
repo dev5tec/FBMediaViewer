@@ -8,7 +8,12 @@
 
 #import "FBMediaViewerRendererWebView.h"
 
+@interface FBMediaViewerRendererWebView()
+@property (nonatomic, strong) UIActivityIndicatorView* activityIndicatorView;
+@end
+
 @implementation FBMediaViewerRendererWebView
+@synthesize activityIndicatorView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,16 +27,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"%s|%@", __PRETTY_FUNCTION__, nil);
-//    [UIView animateWithDuration:0.2
-//                     animations:^{
-//                         self.alpha = 1.0;
-//                     }];
+    [self _hideActivityIndicatorView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"%s|%@", __PRETTY_FUNCTION__, error);
+    [self _hideActivityIndicatorView];
 }
 
 /*
@@ -43,17 +44,45 @@
 }
 */
 
+- (void)_displayActivityIndicatorView
+{
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.activityIndicatorView startAnimating];
+    CGRect frame = self.activityIndicatorView.frame;
+    CGRect baseFrame = self.frame;
+    frame.origin = CGPointMake((baseFrame.size.width-frame.size.width)/2.0,
+                               (baseFrame.size.height-frame.size.height)/2.0);
+    self.activityIndicatorView.frame = frame;
+    [self addSubview:self.activityIndicatorView];
+}
+- (void)_hideActivityIndicatorView
+{
+    if (self.activityIndicatorView) {
+        [self.activityIndicatorView removeFromSuperview];
+        self.activityIndicatorView = nil;
+    }
+}
 
 #pragma mark -
 #pragma mark FBMediaViewerRenderer
 
 - (void)renderContentOfURL:(NSURL*)url
 {
-//    self.alpha = 0.0;
-    
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
-    [self loadRequest:request];
+    if (url) {
+        [self _hideActivityIndicatorView];
+        [self loadRequest:[NSURLRequest requestWithURL:url]];
+        [self _displayActivityIndicatorView];
 
+    } else {
+        [self clear];
+    }
+}
+
+- (void)clear
+{
+    [self _hideActivityIndicatorView];
+    NSURL* blankURL = [NSURL URLWithString:@"about:blank"];
+    [self loadRequest:[NSURLRequest requestWithURL:blankURL]];
 }
 
 

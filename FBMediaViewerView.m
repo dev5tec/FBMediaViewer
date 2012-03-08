@@ -8,6 +8,7 @@
 
 #import "FBMediaViewerView.h"
 #import "FBMediaViewerInnerView.h"
+#import "FBMediaViewerItemLoader.h"
 
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_SPACING_WIDTH	40
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_SPACING_HEIGHT	0
@@ -36,7 +37,7 @@
 @synthesize currentIndex = currentIndex_;
 @synthesize dataSource;
 @synthesize delegate;
-@synthesize contentLoader;
+@synthesize itemLoader;
 
 // private
 @synthesize baseScrollView;
@@ -67,7 +68,6 @@
 	}
 	
 	innerView.mediaViewerItem = [self.dataSource mediaViewerView:self itemAtIndex:index];
-    [innerView loadWithForceReload:NO];
 }
 
 
@@ -212,6 +212,8 @@
 	[self.baseScrollView setContentOffset:CGPointMake(
                                                   self.contentOffsetIndex*newSizeWithSpace.width, 0)
 							 animated:animated];
+    
+    [self._currentInnerView willAppear];
 }
 
 - (FBMediaViewerInnerView*)_currentInnerView
@@ -239,10 +241,13 @@
 
 - (void)dealloc
 {
+    // cleanup
+    [self.itemLoader cancelAllItems];
+
     // public
     self.dataSource = nil;
     self.delegate = nil;
-    self.contentLoader = nil;
+    self.itemLoader = nil;
 
     // private
     self.baseScrollView = nil;
@@ -322,6 +327,8 @@
             [self.delegate mediaViewerView:self willMoveFromIndex:self.currentIndex];
         }
 
+        [self._currentInnerView willDisAppear];
+
 		if (delta > 0) {
 			self.currentIndex++;
 			self.contentOffsetIndex++;
@@ -332,6 +339,7 @@
             self.contentOffsetIndex--;
             [self _scrollToLeft];
 		}
+        [self._currentInnerView willAppear];
 	}
 	
 }
@@ -431,7 +439,7 @@
 
 - (id <FBMediaViewerItem>)currentItem
 {
-    return [self _currentInnerView].mediaViewerItem;
+    return self._currentInnerView.mediaViewerItem;
 }
 
 

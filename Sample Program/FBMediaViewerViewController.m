@@ -8,7 +8,7 @@
 
 #import "FBMediaViewerViewController.h"
 #import "FBGenericMediaViewerItem.h"
-#import "FBMediaViewerContentLoaderLocal.h"
+#import "FBMediaViewerItemLoaderLocal.h"
 
 @interface FBMediaViewerViewController ()
 
@@ -43,8 +43,8 @@
 //    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil]];
 //    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
 
-    self.contentLoader = [FBMediaViewerContentLoaderLocal new];
-    self.mediaViewerView.contentLoader = self.contentLoader;
+    self.contentLoader = [FBMediaViewerItemLoaderLocal new];
+    self.mediaViewerView.itemLoader = self.contentLoader;
     [self.mediaViewerView reloadData];
 }
 

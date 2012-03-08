@@ -17,5 +17,4 @@
 @property (nonatomic, assign) NSUInteger size;
 @property (nonatomic, strong) NSDate* modifiedDate;
 
-
 @end

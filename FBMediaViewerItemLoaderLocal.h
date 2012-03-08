@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FBMediaViewerContentLoader.h"
+#import "FBMediaViewerItemLoader.h"
 
-@interface FBMediaViewerContentLoaderLocal : NSObject <FBMediaViewerContentLoader>
+@interface FBMediaViewerItemLoaderLocal : NSObject <FBMediaViewerItemLoader>
 
 @end

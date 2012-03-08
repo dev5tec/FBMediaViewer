@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C1F648214FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F648114FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m */; };
+		4C1F648214FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F648114FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m */; };
 		4C280F4314F4B46400DB9916 /* FBMediaViewerRendererWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */; };
 		4C280F4E14F4C9B700DB9916 /* image01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C280F4614F4C9B700DB9916 /* image01.jpg */; };
 		4C795C0B14F5DD38003EDA40 /* sample.doc in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0814F5DD38003EDA40 /* sample.doc */; };
@@ -37,9 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C1F647E14FB24D4005E58EF /* FBMediaViewerContentLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerContentLoader.h; sourceTree = "<group>"; };
-		4C1F648014FB2964005E58EF /* FBMediaViewerContentLoaderLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerContentLoaderLocal.h; sourceTree = "<group>"; };
-		4C1F648114FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerContentLoaderLocal.m; sourceTree = "<group>"; };
+		4C1F647E14FB24D4005E58EF /* FBMediaViewerItemLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerItemLoader.h; sourceTree = "<group>"; };
+		4C1F648014FB2964005E58EF /* FBMediaViewerItemLoaderLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerItemLoaderLocal.h; sourceTree = "<group>"; };
+		4C1F648114FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerItemLoaderLocal.m; sourceTree = "<group>"; };
 		4C280F4114F4B46400DB9916 /* FBMediaViewerRendererWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererWebView.h; sourceTree = "<group>"; };
 		4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererWebView.m; sourceTree = "<group>"; };
 		4C280F4614F4C9B700DB9916 /* image01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image01.jpg; sourceTree = "<group>"; };
@@ -99,8 +99,8 @@
 		4C1F647F14FB2709005E58EF /* Downloaders */ = {
 			isa = PBXGroup;
 			children = (
-				4C1F648014FB2964005E58EF /* FBMediaViewerContentLoaderLocal.h */,
-				4C1F648114FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m */,
+				4C1F648014FB2964005E58EF /* FBMediaViewerItemLoaderLocal.h */,
+				4C1F648114FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m */,
 			);
 			name = Downloaders;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				4C795CDB14F763AB003EDA40 /* FBMediaViewerItem.h */,
 				4C795CBB14F72E25003EDA40 /* FBMediaViewerRenderer.h */,
 				4CCF59A515008F1F00BF9F12 /* FBMediaViewerLoadingView.h */,
-				4C1F647E14FB24D4005E58EF /* FBMediaViewerContentLoader.h */,
+				4C1F647E14FB24D4005E58EF /* FBMediaViewerItemLoader.h */,
 				4C795CE414F76E23003EDA40 /* Media Items */,
 				4C795CBA14F72DCE003EDA40 /* Inner Views */,
 				4CCF59B215009D1500BF9F12 /* Loading Views */,
@@ -307,7 +307,7 @@
 				4C280F4314F4B46400DB9916 /* FBMediaViewerRendererWebView.m in Sources */,
 				4C795CBF14F72F31003EDA40 /* FBMediaViewerInnerView.m in Sources */,
 				4C795CE314F769D9003EDA40 /* FBGenericMediaViewerItem.m in Sources */,
-				4C1F648214FB2964005E58EF /* FBMediaViewerContentLoaderLocal.m in Sources */,
+				4C1F648214FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m in Sources */,
 				4CCF59A91500901800BF9F12 /* FBMediaViewerGenericLoadingView.m in Sources */,
 				4CCF59B115009CFE00BF9F12 /* FBMediaViewerProgressView.m in Sources */,
 			);

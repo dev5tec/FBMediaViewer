@@ -23,17 +23,19 @@
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView willMoveFromIndex:(NSUInteger)index;
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didMoveToIndex:(NSUInteger)index;
 - (void)mediaViewerViewDidStopSlideShow:(FBMediaViewerView*)mediaViewerView;
+
+- (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didLoadMediaViewerItem:(id <FBMediaViewerItem>)viewerItem;
 @end
 
 //------------------------------------------------------------------------------
 
-@protocol FBMediaViewerContentLoader;
+@protocol FBMediaViewerItemLoader;
 @interface FBMediaViewerView : UIView <UIScrollViewDelegate>
 
 // Properties (Public)
 @property (nonatomic, assign) IBOutlet id <FBImageViewerViewDelegate> delegate;
 @property (nonatomic, assign) IBOutlet id <FBMediaViewerViewDataSource> dataSource;
-@property (nonatomic, assign) IBOutlet id <FBMediaViewerContentLoader> contentLoader;
+@property (nonatomic, assign) IBOutlet id <FBMediaViewerItemLoader> itemLoader;
 @property (nonatomic, assign) NSInteger currentIndex;	// start with 0
 
 // API

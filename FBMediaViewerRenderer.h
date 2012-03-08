@@ -12,5 +12,6 @@
 
 // API
 - (void)renderContentOfURL:(NSURL*)url;
+- (void)clear;
 
 @end

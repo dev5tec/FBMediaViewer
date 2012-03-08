@@ -25,5 +25,7 @@
 // API
 - (void)loadWithForceReload:(BOOL)forceReload;
 - (void)cancel;
+- (void)willAppear;
+- (void)willDisAppear;
 
 @end
