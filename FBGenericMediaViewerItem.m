@@ -11,6 +11,7 @@
 @synthesize localFileURL;
 @synthesize size;
 @synthesize modifiedDate;
+@synthesize loadWhenAppearing;
 
 + (FBGenericMediaViewerItem*)genericMediaItemWithURL:(NSURL*)url
 {

@@ -4,8 +4,7 @@
 //
 //  Created by Hiroshi Hashiguchi on 2/21/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
+//    
 #import "FBMediaViewerView.h"
 #import "FBMediaViewerInnerView.h"
 #import "FBMediaViewerItemLoader.h"
@@ -143,7 +142,7 @@
 	//-------------------------	
 	self.baseScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
 	
-	self.baseScrollView.delegate = self;
+//	self.baseScrollView.delegate = self; ==> move other place
 	self.baseScrollView.pagingEnabled = YES;
 	self.baseScrollView.showsHorizontalScrollIndicator = NO;
 	self.baseScrollView.showsVerticalScrollIndicator = NO;
@@ -151,7 +150,7 @@
 	self.baseScrollView.autoresizingMask =
         UIViewAutoresizingFlexibleWidth |
         UIViewAutoresizingFlexibleHeight;
-    self.baseScrollView.backgroundColor = [UIColor blackColor];
+    self.baseScrollView.backgroundColor = self.backgroundColor;
 	[self _layoutBaseScrollView];
     
 	[self addSubview:self.baseScrollView];
@@ -234,6 +233,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
+        self.backgroundColor = [UIColor blackColor];
         [self _setupSubViews];
     }
     return self;
@@ -258,6 +258,9 @@
 - (void)layoutSubviews
 {
 	[self _layoutSubviewsWithSizeChecking:YES animated:NO];
+    if (self.baseScrollView.delegate == nil) {
+        self.baseScrollView.delegate = self;
+    }
 }
 
 #pragma mark -
@@ -327,19 +330,23 @@
             [self.delegate mediaViewerView:self willMoveFromIndex:self.currentIndex];
         }
 
-        [self._currentInnerView willDisAppear];
-
 		if (delta > 0) {
-			self.currentIndex++;
-			self.contentOffsetIndex++;
-            [self _scrollToRight];
-			
+            if (self.currentIndex < self._numberOfItems-1) {
+                [self._currentInnerView willDisAppear];
+                self.currentIndex++;
+                self.contentOffsetIndex++;
+                [self _scrollToRight];
+                [self._currentInnerView willAppear];
+            }			
 		} else {
-			self.currentIndex--;
-            self.contentOffsetIndex--;
-            [self _scrollToLeft];
+            if (self.currentIndex >= 1) {
+                [self._currentInnerView willDisAppear];
+                self.currentIndex--;
+                self.contentOffsetIndex--;
+                [self _scrollToLeft];
+                [self._currentInnerView willAppear];
+            }
 		}
-        [self._currentInnerView willAppear];
 	}
 	
 }

@@ -16,5 +16,5 @@
 @property (nonatomic, strong) NSURL* localFileURL;
 @property (nonatomic, assign) NSUInteger size;
 @property (nonatomic, strong) NSDate* modifiedDate;
-
+@property (nonatomic, assign, readonly) BOOL loadWhenAppearing;
 @end

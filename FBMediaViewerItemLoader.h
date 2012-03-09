@@ -23,9 +23,6 @@ typedef void (^FBMediaViewerContentLoaderFailedBlock)(void);
                      completion:(FBMediaViewerContentLoaderCompletionBlock)completionBlock
                          failed:(FBMediaViewerContentLoaderFailedBlock)failedBlock;
 
-// return cached file's URL
-- (NSURL*)localFileURLForContentURL:(NSURL*)contentURL;
-
 - (void)cancelAllItems;
 - (void)cancelWithMediaViewerItem:(id <FBMediaViewerItem>)mediaViewerItem;
 

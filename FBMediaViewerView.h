@@ -23,8 +23,6 @@
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView willMoveFromIndex:(NSUInteger)index;
 - (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didMoveToIndex:(NSUInteger)index;
 - (void)mediaViewerViewDidStopSlideShow:(FBMediaViewerView*)mediaViewerView;
-
-- (void)mediaViewerView:(FBMediaViewerView*)mediaViewerView didLoadMediaViewerItem:(id <FBMediaViewerItem>)viewerItem;
 @end
 
 //------------------------------------------------------------------------------

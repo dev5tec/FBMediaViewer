@@ -40,6 +40,22 @@
 
 
 #pragma mark -
+#pragma mark Privates
+- (void)_setupRenderWithURL:(NSURL*)url
+{
+	if (self.renderer) {
+		[self.renderer removeFromSuperview];
+		self.renderer = nil;
+	}
+
+	self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:self.bounds];
+	self.renderer.autoresizingMask =
+		UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self insertSubview:self.renderer belowSubview:self.loadinDialogView];
+}
+
+
+#pragma mark -
 #pragma mark Basics
 
 - (id)initWithMediaViewerView:(FBMediaViewerView*)view frame:(CGRect)frame
@@ -47,13 +63,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.mediaViewerView = view;
-        self.backgroundColor = [UIColor redColor];
-        // TODO
-        self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:CGRectZero];
-        self.renderer.autoresizingMask =
-            UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self addSubview:self.renderer];
-        
+
         self.loadinDialogView = [FBMediaViewerGenericLoadingView loadingView];
         self.loadinDialogView.hidden = YES;
         [self.loadinDialogView layoutInFrame:self.frame];
@@ -78,23 +88,25 @@
 - (void)setMediaViewerItem:(id<FBMediaViewerItem>)mediaViewerItem
 {
     if (mediaViewerItem_) {
-        [self.renderer clear];
         [self cancel];
         self.loadinDialogView.hidden = YES;
     }
     
     mediaViewerItem_ = mediaViewerItem;
 
-    if (mediaViewerItem) {
-        mediaViewerItem.localFileURL = [self.mediaViewerView.itemLoader localFileURLForContentURL:mediaViewerItem.contentURL];
+	[self _setupRenderWithURL:mediaViewerItem.contentURL];
+
+    if (mediaViewerItem && !mediaViewerItem.loadWhenAppearing) {
 
         if (mediaViewerItem.localFileURL) {
             [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
             self.displaying = YES;
         } else {
+            [self.renderer clear];
             self.displaying = NO;
         }
     } else {
+        [self.renderer clear];
         self.displaying = NO;
     }
 }
@@ -121,11 +133,6 @@
          if (!canceled) {
              self.loadinDialogView.hidden = YES;
              [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
-
-             // do later
-//             if ([self.mediaViewerView.delegate respondsToSelector:@selector(mediaViewerView:didLoadMediaViewerItem:)]) {
-//                 [self.mediaViewerView.delegate mediaViewerView:self.mediaViewerView didLoadMediaViewerItem:self.mediaViewerItem];
-//             }
          }
      }
      failed:^{

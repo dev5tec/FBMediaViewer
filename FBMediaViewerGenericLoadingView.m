@@ -45,18 +45,18 @@
         self.titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 5, FB_MEDIA_VIEWER_GENERIC_LOADING_VIEW_WIDTH, 40)];
         self.titleLabel.numberOfLines = 2;
         self.titleLabel.textAlignment = UITextAlignmentCenter;
-        self.titleLabel.textColor = [UIColor grayColor];
+        self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.titleLabel];
 
         self.progressLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 80, FB_MEDIA_VIEWER_GENERIC_LOADING_VIEW_WIDTH, 30)];
         self.progressLabel.textAlignment = UITextAlignmentCenter;
-        self.progressLabel.textColor = [UIColor grayColor];
+        self.progressLabel.textColor = [UIColor whiteColor];
         self.progressLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.progressLabel];
         
         self.progressView = [[FBMediaViewerProgressView alloc] initWithFrame:CGRectMake(40, 50, 240, 26)];
-        self.progressView.progressViewStyle = FBMediaViewerProgressViewStyleGray;
+        self.progressView.progressViewStyle = FBMediaViewerProgressViewStyleWhite;
         self.progressView.lineWidth = 3.0;
         [self addSubview:self.progressView];
     }

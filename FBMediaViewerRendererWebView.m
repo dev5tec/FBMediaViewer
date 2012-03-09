@@ -5,15 +5,16 @@
 //  Created by Hiroshi Hashiguchi on 2/22/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
+    
 #import "FBMediaViewerRendererWebView.h"
 
 @interface FBMediaViewerRendererWebView()
-@property (nonatomic, strong) UIActivityIndicatorView* activityIndicatorView;
+@property (nonatomic, strong) UIView* waitView;
 @end
 
 @implementation FBMediaViewerRendererWebView
-@synthesize activityIndicatorView;
+@synthesize waitView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,6 +22,7 @@
     if (self) {
         self.scalesPageToFit = YES;
         self.delegate = self;
+        self.backgroundColor = [UIColor darkGrayColor];
     }
     return self;
 }
@@ -44,22 +46,50 @@
 }
 */
 
-- (void)_displayActivityIndicatorView
+- (void)_layoutWaitView
 {
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self.activityIndicatorView startAnimating];
-    CGRect frame = self.activityIndicatorView.frame;
-    CGRect baseFrame = self.frame;
-    frame.origin = CGPointMake((baseFrame.size.width-frame.size.width)/2.0,
-                               (baseFrame.size.height-frame.size.height)/2.0);
-    self.activityIndicatorView.frame = frame;
-    [self addSubview:self.activityIndicatorView];
+    if (self.waitView) {
+        CGRect waitViewFrame = self.waitView.frame;
+        waitViewFrame.origin.x = (self.frame.size.width-waitViewFrame.size.width)/2.0;
+        waitViewFrame.origin.y = (self.frame.size.height-waitViewFrame.size.height)/2.0;
+        self.waitView.frame = waitViewFrame;
+    }    
 }
+
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self _layoutWaitView];
+}
+
+
+- (void)_displayWaitView
+{
+    CGRect waitViewFrame = CGRectMake(0, 0, 150, 92);
+    self.waitView = [[UIView alloc] initWithFrame:waitViewFrame];
+    [self _layoutWaitView];
+    CALayer* layer = self.waitView.layer;
+    layer.masksToBounds = YES;
+    layer.cornerRadius = 5.0f;
+    self.waitView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+
+    UIActivityIndicatorView* activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+
+    [activityIndicatorView startAnimating];
+    CGRect frame = activityIndicatorView.frame;
+    frame.origin = CGPointMake((waitViewFrame.size.width-frame.size.width)/2.0,
+                               (waitViewFrame.size.height-frame.size.height)/2.0);
+    activityIndicatorView.frame = frame;
+    [self.waitView addSubview:activityIndicatorView];
+    [self addSubview:self.waitView];
+}
+
 - (void)_hideActivityIndicatorView
 {
-    if (self.activityIndicatorView) {
-        [self.activityIndicatorView removeFromSuperview];
-        self.activityIndicatorView = nil;
+    if (self.waitView) {
+        [self.waitView removeFromSuperview];
+        self.waitView = nil;
     }
 }
 
@@ -71,7 +101,28 @@
     if (url) {
         [self _hideActivityIndicatorView];
         [self loadRequest:[NSURLRequest requestWithURL:url]];
-        [self _displayActivityIndicatorView];
+        [self _displayWaitView];
+        
+//        NSString* extension = [url.pathExtension lowercaseString];
+//        
+//        if ([extension isEqualToString:@"png"] ||
+//            [extension isEqualToString:@"jpg"] ||
+//            [extension isEqualToString:@"jpeg"] ||
+//            [extension isEqualToString:@"gif"]) {
+//
+//            NSString *html = [NSString stringWithFormat:@"<html><head>"
+//                              "</head><body>"
+//                              "<div style=\"display:table-cell;text-align:center;vertical-align:middle;\">"
+//                              "<img src=\"%@\" style=\"vertical-align:middle\"/>"
+//                              "</div>"
+//                              "</body>"
+//                              "</html>", url];
+//
+//            [self loadHTMLString:html baseURL:nil];
+//        } else {
+//            [self loadRequest:[NSURLRequest requestWithURL:url]];            
+//        }
+//
 
     } else {
         [self clear];
@@ -81,8 +132,10 @@
 - (void)clear
 {
     [self _hideActivityIndicatorView];
-    NSURL* blankURL = [NSURL URLWithString:@"about:blank"];
-    [self loadRequest:[NSURLRequest requestWithURL:blankURL]];
+    [self loadHTMLString:@"<html><body bgcolor=\"#555555\"></body></html>"
+                 baseURL:nil];
+    //   NSURL* blankURL = [NSURL URLWithString:@"about:blank"];
+    //    [self loadRequest:[NSURLRequest requestWithURL:blankURL]];
 }
 
 
