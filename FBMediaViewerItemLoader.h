@@ -12,13 +12,19 @@ typedef void (^FBMediaViewerContentLoaderLoadingBlock)(NSUInteger loadedSize);
 typedef void (^FBMediaViewerContentLoaderCompletionBlock)(BOOL canceled);
 typedef void (^FBMediaViewerContentLoaderFailedBlock)(void);
 
+typedef enum
+{
+    FBMeditViewerItemLoaderModeLoadFromRemote = 0,
+    FBMeditViewerItemLoaderModeLoadFromLocal,
+    FBMeditViewerItemLoaderModeLoadFromCache
+} FBMeditViewerItemLoaderMode;
 
 @protocol FBMediaViewerItem;
 
 @protocol FBMediaViewerItemLoader <NSObject>
 
 - (void)loadWithMediaViewerItem:(id <FBMediaViewerItem>)mediaViewerItem
-                    forceReload:(BOOL)forceReload
+                           mode:(FBMeditViewerItemLoaderMode)mode
                         loading:(FBMediaViewerContentLoaderLoadingBlock)loadingBlock
                      completion:(FBMediaViewerContentLoaderCompletionBlock)completionBlock
                          failed:(FBMediaViewerContentLoaderFailedBlock)failedBlock;

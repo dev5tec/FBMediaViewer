@@ -100,10 +100,19 @@
 {
     if (url) {
         [self _hideActivityIndicatorView];
-        [self loadRequest:[NSURLRequest requestWithURL:url]];
+        
+        NSString* extension = [url.pathExtension lowercaseString];
+        if ([extension isEqualToString:@"txt"]) {
+            [self loadData:[NSData dataWithContentsOfURL:url]
+                  MIMEType:@"text/plain"
+          textEncodingName:@"UTF-8"
+                   baseURL:nil];
+        } else {
+            [self loadRequest:[NSURLRequest requestWithURL:url]];
+        }
+
         [self _displayWaitView];
         
-//        NSString* extension = [url.pathExtension lowercaseString];
 //        
 //        if ([extension isEqualToString:@"png"] ||
 //            [extension isEqualToString:@"jpg"] ||

@@ -11,7 +11,7 @@
 @implementation FBMediaViewerItemLoaderLocal
 
 - (void)loadWithMediaViewerItem:(id <FBMediaViewerItem>)mediaViewerItem
-                    forceReload:(BOOL)forceReload
+                           mode:(FBMeditViewerItemLoaderMode)mode
                         loading:(FBMediaViewerContentLoaderLoadingBlock)loadingBlock
                      completion:(FBMediaViewerContentLoaderCompletionBlock)completionBlock
                          failed:(FBMediaViewerContentLoaderFailedBlock)failedBlock

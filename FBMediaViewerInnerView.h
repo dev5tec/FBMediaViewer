@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FBMediaViewerRenderer.h"
+#import "FBMediaViewerItemLoader.h"
 
 @protocol FBMediaViewerItem;
 @class FBMediaViewerView;
@@ -23,7 +24,7 @@
 
 
 // API
-- (void)loadWithForceReload:(BOOL)forceReload;
+- (void)loadWithMode:(FBMeditViewerItemLoaderMode)mode;
 - (void)cancel;
 - (void)willAppear;
 - (void)willDisAppear;

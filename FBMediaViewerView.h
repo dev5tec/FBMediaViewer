@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBMediaViewerItemLoader.h"
 
 @class FBMediaViewerView;
 @protocol FBMediaViewerItem;
@@ -40,7 +41,7 @@
 - (void)reloadData;
 - (void)moveToIndex:(NSInteger)index animated:(BOOL)animated;
 
-- (void)reloadCurrentItem;
+- (void)reloadCurrentItemWithMode:(FBMeditViewerItemLoaderMode)mode;
 - (id <FBMediaViewerItem>)currentItem;
    
 - (void)moveToPreviousItemAnimated:(BOOL)animated;

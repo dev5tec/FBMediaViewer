@@ -387,9 +387,9 @@
 	}
 }
 
-- (void)reloadCurrentItem
+- (void)reloadCurrentItemWithMode:(FBMeditViewerItemLoaderMode)mode
 {
-    [[self _currentInnerView] loadWithForceReload:YES];
+    [[self _currentInnerView] loadWithMode:mode];
 }
 
 - (void)moveToIndex:(NSInteger)index animated:(BOOL)animated

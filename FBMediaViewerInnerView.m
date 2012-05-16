@@ -22,7 +22,7 @@
 @interface FBMediaViewerInnerView()
 @property (nonatomic, assign) FBMediaViewerView* mediaViewerView;
 @property (nonatomic, strong) UIView <FBMediaViewerRenderer> *renderer;
-@property (nonatomic, strong) UIView <FBMediaViewerLoadingView> *loadinDialogView;
+@property (nonatomic, strong) UIView <FBMediaViewerLoadingView> *loadingDialogView;
 @property (nonatomic, assign) BOOL displaying;
 @end
 
@@ -35,7 +35,7 @@
 
 // private
 @synthesize renderer;
-@synthesize loadinDialogView;
+@synthesize loadingDialogView;
 @synthesize displaying;
 
 
@@ -51,7 +51,7 @@
 	self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:self.bounds];
 	self.renderer.autoresizingMask =
 		UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self insertSubview:self.renderer belowSubview:self.loadinDialogView];
+    [self insertSubview:self.renderer belowSubview:self.loadingDialogView];
 }
 
 
@@ -64,10 +64,10 @@
     if (self) {
         self.mediaViewerView = view;
 
-        self.loadinDialogView = [FBMediaViewerGenericLoadingView loadingView];
-        self.loadinDialogView.hidden = YES;
-        [self.loadinDialogView layoutInFrame:self.frame];
-        [self addSubview:self.loadinDialogView];
+        self.loadingDialogView = [FBMediaViewerGenericLoadingView loadingView];
+        self.loadingDialogView.hidden = YES;
+        [self.loadingDialogView layoutInFrame:self.frame];
+        [self addSubview:self.loadingDialogView];
         
         self.frame = frame;
     }
@@ -82,14 +82,14 @@
     [super setFrame:frame];
     frame.origin = CGPointZero;
     self.renderer.frame = frame;
-    [self.loadinDialogView layoutInFrame:frame];
+    [self.loadingDialogView layoutInFrame:frame];
 }
 
 - (void)setMediaViewerItem:(id<FBMediaViewerItem>)mediaViewerItem
 {
     if (mediaViewerItem_) {
         [self cancel];
-        self.loadinDialogView.hidden = YES;
+        self.loadingDialogView.hidden = YES;
     }
     
     mediaViewerItem_ = mediaViewerItem;
@@ -115,23 +115,23 @@
 #pragma mark -
 #pragma mark API
 
-- (void)loadWithForceReload:(BOOL)forceReload
+- (void)loadWithMode:(FBMeditViewerItemLoaderMode)mode
 {
-    self.loadinDialogView.title = self.mediaViewerItem.name;
-    self.loadinDialogView.progress = 0.0f;
-    self.loadinDialogView.hidden = NO;
+    self.loadingDialogView.title = self.mediaViewerItem.name;
+    self.loadingDialogView.progress = 0.0f;
+    self.loadingDialogView.hidden = NO;
 
     [self.renderer clear];
 
     [self.mediaViewerView.itemLoader
      loadWithMediaViewerItem:self.mediaViewerItem
-     forceReload:forceReload
+     mode:mode
      loading:^(NSUInteger loadedSize) {
-         self.loadinDialogView.progress = (CGFloat)loadedSize / (CGFloat)self.mediaViewerItem.size;
+         self.loadingDialogView.progress = (CGFloat)loadedSize / (CGFloat)self.mediaViewerItem.size;
      }
      completion:^(BOOL canceled) {
          if (!canceled) {
-             self.loadinDialogView.hidden = YES;
+             self.loadingDialogView.hidden = YES;
              [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
          }
      }
@@ -149,7 +149,7 @@
 - (void)willAppear
 {
     if (!self.displaying) {
-        [self loadWithForceReload:NO];
+        [self loadWithMode:FBMeditViewerItemLoaderModeLoadFromCache];
         self.displaying = YES;
     }
 }
