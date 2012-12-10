@@ -22,24 +22,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FBMediaViewerRenderer.h"
-#import "FBMediaViewerItemLoader.h"
 
-@protocol FBMediaViewerItem;
-@class FBMediaViewerView;
-
-@interface FBMediaViewerInnerView : UIView
-
-// API (Properties)
-@property (nonatomic, strong) id <FBMediaViewerItem> mediaViewerItem;
-
-// API (Factroies)
-- (id)initWithMediaViewerView:(FBMediaViewerView*)view frame:(CGRect)frame;
-
-
-// API
-- (void)loadWithMode:(FBMeditViewerItemLoaderMode)mode;
-- (void)cancel;
-- (void)willAppear;
-- (void)willDisAppear;
+@interface FBMediaViewerRendererImageView : UIScrollView <FBMediaViewerRenderer, UIScrollViewDelegate>
 
 @end

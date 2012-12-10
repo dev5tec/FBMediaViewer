@@ -1,9 +1,23 @@
 //
-//  FBMediaViewerInnerView.m
-//  FBMediaViewer
+// Copyright (c) 2012 Five-technology Co.,Ltd.
 //
-//  Created by Hiroshi Hashiguchi on 2/24/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 //
 
 #import "FBMediaViewerInnerView.h"
@@ -14,10 +28,14 @@
 #import "FBMediaViewerView.h"
 
 // Inner Views
-#import "FBMediaViewerRendererWebView.h"
 #import "FBMediaViewerGenericLoadingView.h"
+#import "FBMediaViewerRendererImageView.h"
+
+// Renderers
+#import "FBMediaViewerRendererFactory.h"
 
 //--
+//#import "FBMediaViewerRendererWebView.h"
 
 @interface FBMediaViewerInnerView()
 @property (nonatomic, assign) FBMediaViewerView* mediaViewerView;
@@ -29,16 +47,6 @@
 
 @implementation FBMediaViewerInnerView
 
-// public
-@synthesize mediaViewerView;
-@synthesize mediaViewerItem = mediaViewerItem_;
-
-// private
-@synthesize renderer;
-@synthesize loadingDialogView;
-@synthesize displaying;
-
-
 #pragma mark -
 #pragma mark Privates
 - (void)_setupRenderWithURL:(NSURL*)url
@@ -47,8 +55,13 @@
 		[self.renderer removeFromSuperview];
 		self.renderer = nil;
 	}
-
+/*
 	self.renderer = [[FBMediaViewerRendererWebView alloc] initWithFrame:self.bounds];
+//	self.renderer = [[FBMediaViewerRendererImageView alloc] initWithFrame:self.bounds];
+*/
+    
+    self.renderer = [FBMediaViewerRendererFactory rendererForURL:url frame:self.bounds];
+    
 	self.renderer.autoresizingMask =
 		UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self insertSubview:self.renderer belowSubview:self.loadingDialogView];
@@ -87,12 +100,12 @@
 
 - (void)setMediaViewerItem:(id<FBMediaViewerItem>)mediaViewerItem
 {
-    if (mediaViewerItem_) {
+    if (_mediaViewerItem) {
         [self cancel];
         self.loadingDialogView.hidden = YES;
     }
     
-    mediaViewerItem_ = mediaViewerItem;
+    _mediaViewerItem = mediaViewerItem;
 
 	[self _setupRenderWithURL:mediaViewerItem.contentURL];
 
@@ -155,7 +168,7 @@
 }
 - (void)willDisAppear
 {
-    // nothing ?
+    [self.renderer reset];
 }
 
 @end

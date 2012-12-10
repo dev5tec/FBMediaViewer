@@ -1,10 +1,25 @@
 //
-//  FBMediaViewerView.m
-//  FBMediaViewer
+// Copyright (c) 2012 Five-technology Co.,Ltd.
 //
-//  Created by Hiroshi Hashiguchi on 2/21/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//    
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
 #import "FBMediaViewerView.h"
 #import "FBMediaViewerInnerView.h"
 #import "FBMediaViewerItemLoader.h"
@@ -28,24 +43,10 @@
 @property (nonatomic, assign) CGSize spacing;
 @property (nonatomic, assign) BOOL animatingWithScrolling;
 @property (nonatomic, assign) CGSize previousFrameSize;
+
 @end
 
 @implementation FBMediaViewerView
-
-// public
-@synthesize currentIndex = currentIndex_;
-@synthesize dataSource;
-@synthesize delegate;
-@synthesize itemLoader;
-
-// private
-@synthesize baseScrollView;
-@synthesize contentOffsetIndex;
-@synthesize innerViews;
-@synthesize spacing;
-@synthesize animatingWithScrolling;
-@synthesize previousFrameSize;
-
 
 #pragma mark -
 #pragma mark Privates
@@ -204,14 +205,13 @@
 	
 	// adjust content size and offset of base scrollView
 	//--
-    
 	self.baseScrollView.contentSize = CGSizeMake(
                                              [self _numberOfItems]*newSizeWithSpace.width,
                                              newSize.height);
 	[self.baseScrollView setContentOffset:CGPointMake(
                                                   self.contentOffsetIndex*newSizeWithSpace.width, 0)
 							 animated:animated];
-    
+
     [self._currentInnerView willAppear];
 }
 
@@ -311,10 +311,6 @@
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-//	[self stopSlideShow];
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -322,10 +318,7 @@
 	CGFloat delta = position - (CGFloat)self.currentIndex;
 	
 	if (fabs(delta) >= 1.0f) {
-//		FBMediaViewerInnerView* currentInnerlView =
-//            [self.innerViews objectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW];
-//		[self _resetZoomScrollView:currentInnerlView];
-                
+
         if ([self.delegate respondsToSelector:@selector(mediaViewerView:willMoveFromIndex:)]) {
             [self.delegate mediaViewerView:self willMoveFromIndex:self.currentIndex];
         }
@@ -361,7 +354,7 @@
 #pragma mark Properties
 - (void)setCurrentIndex:(NSInteger)currentIndex
 {
-    currentIndex_ = currentIndex;
+    _currentIndex = currentIndex;
     if ([self.delegate respondsToSelector:@selector(mediaViewerView:didMoveToIndex:)]) {
         [self.delegate mediaViewerView:self didMoveToIndex:currentIndex];
     }

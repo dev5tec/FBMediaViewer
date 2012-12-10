@@ -20,26 +20,11 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "FBMediaViewerRenderer.h"
-#import "FBMediaViewerItemLoader.h"
 
-@protocol FBMediaViewerItem;
-@class FBMediaViewerView;
+@interface FBMediaViewerRendererFactory : NSObject
 
-@interface FBMediaViewerInnerView : UIView
-
-// API (Properties)
-@property (nonatomic, strong) id <FBMediaViewerItem> mediaViewerItem;
-
-// API (Factroies)
-- (id)initWithMediaViewerView:(FBMediaViewerView*)view frame:(CGRect)frame;
-
-
-// API
-- (void)loadWithMode:(FBMeditViewerItemLoaderMode)mode;
-- (void)cancel;
-- (void)willAppear;
-- (void)willDisAppear;
++ (UIView <FBMediaViewerRenderer> *)rendererForURL:(NSURL*)url frame:(CGRect)frame;
 
 @end

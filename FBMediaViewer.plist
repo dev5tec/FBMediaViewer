@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DefaultRenderer</key>
+	<string>FBMediaViewerRendererWebView</string>
+	<key>Renderers</key>
+	<dict>
+		<key>FBMediaViewerRendererMovieView</key>
+		<array>
+			<string>mov</string>
+			<string>m4v</string>
+			<string>mp4</string>
+		</array>
+		<key>FBMediaViewerRendererImageView</key>
+		<array>
+			<string>png</string>
+			<string>jpg</string>
+			<string>gif</string>
+			<string>tiff</string>
+		</array>
+	</dict>
+</dict>
+</plist>

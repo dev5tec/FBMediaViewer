@@ -22,6 +22,8 @@
 		4C795C8B14F622B1003EDA40 /* image08.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C8514F622B1003EDA40 /* image08.jpg */; };
 		4C795CBF14F72F31003EDA40 /* FBMediaViewerInnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C795CBE14F72F31003EDA40 /* FBMediaViewerInnerView.m */; };
 		4C795CE314F769D9003EDA40 /* FBGenericMediaViewerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C795CE214F769D8003EDA40 /* FBGenericMediaViewerItem.m */; };
+		4C7A37E116673C2600DC39A9 /* sample_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A37E016673C2600DC39A9 /* sample_small.jpg */; };
+		4C7A37E416673F5600DC39A9 /* sample_large.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 4C7A37E316673F5600DC39A9 /* sample_large.JPG */; };
 		4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160A14F37F7A006564FE /* UIKit.framework */; };
 		4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160C14F37F7A006564FE /* Foundation.framework */; };
 		4C85160F14F37F7B006564FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C85160E14F37F7B006564FE /* CoreGraphics.framework */; };
@@ -32,6 +34,12 @@
 		4C85162114F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */; };
 		4C85162414F37F7B006564FE /* FBMediaViewerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */; };
 		4C85162D14F37FFE006564FE /* FBMediaViewerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C85162C14F37FFE006564FE /* FBMediaViewerView.m */; };
+		4CA90DA2165DEA6200D91B8B /* FBMediaViewer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CA90DA1165DEA6200D91B8B /* FBMediaViewer.plist */; };
+		4CA90DA6165DEBE300D91B8B /* FBMediaViewerRendererFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA90DA5165DEBE300D91B8B /* FBMediaViewerRendererFactory.m */; };
+		4CA90DB2165E009600D91B8B /* FBMediaViewerRendererMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA90DB1165E009600D91B8B /* FBMediaViewerRendererMovieView.m */; };
+		4CA90DB4165E02BA00D91B8B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA90DB3165E02BA00D91B8B /* MediaPlayer.framework */; };
+		4CCB44A5165617D300BD8B15 /* FBMediaViewerRendererImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB44A4165617D300BD8B15 /* FBMediaViewerRendererImageView.m */; };
+		4CCD5BF716635457000794D5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD5BF616635456000794D5 /* Default-568h@2x.png */; };
 		4CCF59A91500901800BF9F12 /* FBMediaViewerGenericLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF59A81500901800BF9F12 /* FBMediaViewerGenericLoadingView.m */; };
 		4CCF59B115009CFE00BF9F12 /* FBMediaViewerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCF59AF15009CFE00BF9F12 /* FBMediaViewerProgressView.m */; };
 /* End PBXBuildFile section */
@@ -59,6 +67,8 @@
 		4C795CDB14F763AB003EDA40 /* FBMediaViewerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerItem.h; sourceTree = "<group>"; };
 		4C795CE114F769D8003EDA40 /* FBGenericMediaViewerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBGenericMediaViewerItem.h; sourceTree = "<group>"; };
 		4C795CE214F769D8003EDA40 /* FBGenericMediaViewerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBGenericMediaViewerItem.m; sourceTree = "<group>"; };
+		4C7A37E016673C2600DC39A9 /* sample_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_small.jpg; sourceTree = "<group>"; };
+		4C7A37E316673F5600DC39A9 /* sample_large.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_large.JPG; sourceTree = "<group>"; };
 		4C85160614F37F7A006564FE /* FBMediaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBMediaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C85160A14F37F7A006564FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C85160C14F37F7A006564FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,6 +85,15 @@
 		4C85162314F37F7B006564FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FBMediaViewerViewController_iPad.xib; sourceTree = "<group>"; };
 		4C85162B14F37FFE006564FE /* FBMediaViewerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerView.h; sourceTree = "<group>"; };
 		4C85162C14F37FFE006564FE /* FBMediaViewerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerView.m; sourceTree = "<group>"; };
+		4CA90DA1165DEA6200D91B8B /* FBMediaViewer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FBMediaViewer.plist; sourceTree = "<group>"; };
+		4CA90DA4165DEBE300D91B8B /* FBMediaViewerRendererFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererFactory.h; sourceTree = "<group>"; };
+		4CA90DA5165DEBE300D91B8B /* FBMediaViewerRendererFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererFactory.m; sourceTree = "<group>"; };
+		4CA90DB0165E009600D91B8B /* FBMediaViewerRendererMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererMovieView.h; sourceTree = "<group>"; };
+		4CA90DB1165E009600D91B8B /* FBMediaViewerRendererMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererMovieView.m; sourceTree = "<group>"; };
+		4CA90DB3165E02BA00D91B8B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4CCB44A3165617D300BD8B15 /* FBMediaViewerRendererImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererImageView.h; sourceTree = "<group>"; };
+		4CCB44A4165617D300BD8B15 /* FBMediaViewerRendererImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererImageView.m; sourceTree = "<group>"; };
+		4CCD5BF616635456000794D5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CCF59A515008F1F00BF9F12 /* FBMediaViewerLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerLoadingView.h; sourceTree = "<group>"; };
 		4CCF59A71500901800BF9F12 /* FBMediaViewerGenericLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerGenericLoadingView.h; sourceTree = "<group>"; };
 		4CCF59A81500901800BF9F12 /* FBMediaViewerGenericLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerGenericLoadingView.m; sourceTree = "<group>"; };
@@ -87,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA90DB4165E02BA00D91B8B /* MediaPlayer.framework in Frameworks */,
 				4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */,
 				4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */,
 				4C85160F14F37F7B006564FE /* CoreGraphics.framework in Frameworks */,
@@ -105,7 +125,7 @@
 			name = Downloaders;
 			sourceTree = "<group>";
 		};
-		4C280F4514F4C9A600DB9916 /* Sample Images */ = {
+		4C280F4514F4C9A600DB9916 /* Sample Files */ = {
 			isa = PBXGroup;
 			children = (
 				4C280F4614F4C9B700DB9916 /* image01.jpg */,
@@ -118,17 +138,26 @@
 				4C795C0814F5DD38003EDA40 /* sample.doc */,
 				4C795C0914F5DD38003EDA40 /* sample.xls */,
 				4C795C0A14F5DD38003EDA40 /* sample.mov */,
+				4C7A37E316673F5600DC39A9 /* sample_large.JPG */,
+				4C7A37E016673C2600DC39A9 /* sample_small.jpg */,
 			);
-			name = "Sample Images";
+			name = "Sample Files";
 			sourceTree = "<group>";
 		};
-		4C795CBA14F72DCE003EDA40 /* Inner Views */ = {
+		4C795CBA14F72DCE003EDA40 /* Renderes (UIView subclass) */ = {
 			isa = PBXGroup;
 			children = (
+				4CA90DA1165DEA6200D91B8B /* FBMediaViewer.plist */,
 				4C280F4114F4B46400DB9916 /* FBMediaViewerRendererWebView.h */,
 				4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */,
+				4CCB44A3165617D300BD8B15 /* FBMediaViewerRendererImageView.h */,
+				4CCB44A4165617D300BD8B15 /* FBMediaViewerRendererImageView.m */,
+				4CA90DB0165E009600D91B8B /* FBMediaViewerRendererMovieView.h */,
+				4CA90DB1165E009600D91B8B /* FBMediaViewerRendererMovieView.m */,
+				4CA90DA4165DEBE300D91B8B /* FBMediaViewerRendererFactory.h */,
+				4CA90DA5165DEBE300D91B8B /* FBMediaViewerRendererFactory.m */,
 			);
-			name = "Inner Views";
+			name = "Renderes (UIView subclass)";
 			sourceTree = "<group>";
 		};
 		4C795CE414F76E23003EDA40 /* Media Items */ = {
@@ -143,6 +172,8 @@
 		4C8515FB14F37F7A006564FE = {
 			isa = PBXGroup;
 			children = (
+				4CCD5BF616635456000794D5 /* Default-568h@2x.png */,
+				4CA90DB3165E02BA00D91B8B /* MediaPlayer.framework */,
 				4C795C7D14F61FDF003EDA40 /* README.txt */,
 				4C85162A14F37FD9006564FE /* FBMediaViewer */,
 				4C85161014F37F7B006564FE /* Sample Program */,
@@ -178,7 +209,7 @@
 				4C85161D14F37F7B006564FE /* FBMediaViewerViewController.m */,
 				4C85161F14F37F7B006564FE /* FBMediaViewerViewController_iPhone.xib */,
 				4C85162214F37F7B006564FE /* FBMediaViewerViewController_iPad.xib */,
-				4C280F4514F4C9A600DB9916 /* Sample Images */,
+				4C280F4514F4C9A600DB9916 /* Sample Files */,
 				4C85161114F37F7B006564FE /* Supporting Files */,
 			);
 			path = "Sample Program";
@@ -207,7 +238,7 @@
 				4CCF59A515008F1F00BF9F12 /* FBMediaViewerLoadingView.h */,
 				4C1F647E14FB24D4005E58EF /* FBMediaViewerItemLoader.h */,
 				4C795CE414F76E23003EDA40 /* Media Items */,
-				4C795CBA14F72DCE003EDA40 /* Inner Views */,
+				4C795CBA14F72DCE003EDA40 /* Renderes (UIView subclass) */,
 				4CCF59B215009D1500BF9F12 /* Loading Views */,
 				4C1F647F14FB2709005E58EF /* Downloaders */,
 			);
@@ -290,6 +321,10 @@
 				4C795C8914F622B1003EDA40 /* image06.jpg in Resources */,
 				4C795C8A14F622B1003EDA40 /* image07.jpg in Resources */,
 				4C795C8B14F622B1003EDA40 /* image08.jpg in Resources */,
+				4CA90DA2165DEA6200D91B8B /* FBMediaViewer.plist in Resources */,
+				4CCD5BF716635457000794D5 /* Default-568h@2x.png in Resources */,
+				4C7A37E116673C2600DC39A9 /* sample_small.jpg in Resources */,
+				4C7A37E416673F5600DC39A9 /* sample_large.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +345,9 @@
 				4C1F648214FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m in Sources */,
 				4CCF59A91500901800BF9F12 /* FBMediaViewerGenericLoadingView.m in Sources */,
 				4CCF59B115009CFE00BF9F12 /* FBMediaViewerProgressView.m in Sources */,
+				4CCB44A5165617D300BD8B15 /* FBMediaViewerRendererImageView.m in Sources */,
+				4CA90DA6165DEBE300D91B8B /* FBMediaViewerRendererFactory.m in Sources */,
+				4CA90DB2165E009600D91B8B /* FBMediaViewerRendererMovieView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +434,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample Program/FBMediaViewer-Prefix.pch";
 				INFOPLIST_FILE = "Sample Program/FBMediaViewer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -408,7 +446,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample Program/FBMediaViewer-Prefix.pch";
 				INFOPLIST_FILE = "Sample Program/FBMediaViewer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -10,6 +10,8 @@
 #import "FBGenericMediaViewerItem.h"
 #import "FBMediaViewerItemLoaderLocal.h"
 
+#import "FBMediaViewerRendererImageView.h"
+
 @interface FBMediaViewerViewController ()
 
 @property (nonatomic, strong) NSMutableArray* items;
@@ -29,17 +31,25 @@
     NSURL* url;
     
     self.items = [NSMutableArray array];
-    for (int i=0; i < 4; i++) {
-        url = [[NSBundle mainBundle] URLForResource:
-               [NSString stringWithFormat:@"image%02d.jpg", i+1] withExtension:nil];
-        [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
-    }
+    
+    url = [[NSBundle mainBundle] URLForResource:@"sample_small.jpg" withExtension:nil];
+    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
+
+    url = [[NSBundle mainBundle] URLForResource:@"sample_large.JPG" withExtension:nil];
+    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
+    
+    url = [[NSBundle mainBundle] URLForResource:@"image01.jpg" withExtension:nil];
+    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
+    
     url = [[NSBundle mainBundle] URLForResource:@"sample.doc" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
 
     url = [[NSBundle mainBundle] URLForResource:@"sample.xls" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
-    
+
+    url = [[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil];
+    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
+
 //    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil]];
 //    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
 
@@ -78,7 +88,5 @@
 {
     return [self.items objectAtIndex:index];
 }
-
-
 
 @end
