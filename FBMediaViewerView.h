@@ -41,6 +41,11 @@
 @end
 
 //------------------------------------------------------------------------------
+typedef enum {
+    FBMediaViewerViewPageControllerPositionTop = 0,
+    FBMediaViewerViewPageControllerPositionBottom,
+} FBMediaViewerViewPageControllerPosition;
+
 
 @protocol FBMediaViewerItemLoader;
 @interface FBMediaViewerView : UIView <UIScrollViewDelegate>
@@ -51,6 +56,12 @@
 @property (nonatomic, assign) IBOutlet id <FBMediaViewerItemLoader> itemLoader;
 @property (nonatomic, assign) NSInteger currentIndex;	// start with 0
 
+// Properties (Page control)
+@property (nonatomic, assign) BOOL pageControlHidden;
+@property (nonatomic, assign) FBMediaViewerViewPageControllerPosition pageControlPosition;
+@property (nonatomic, assign) CGFloat pageControlOffset;
+
+
 // API
 - (void)reloadData;
 - (void)moveToIndex:(NSInteger)index animated:(BOOL)animated;
@@ -60,6 +71,9 @@
    
 - (void)moveToPreviousItemAnimated:(BOOL)animated;
 - (void)moveToNextItemAnimated:(BOOL)animated;
+- (void)moveToLastItemAnimated:(BOOL)animated;
+
+- (void)removeCurrentIndexAimated:(BOOL)animated;
 
 
 // API (IBAction)

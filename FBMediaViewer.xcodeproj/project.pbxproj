@@ -10,6 +10,7 @@
 		4C1F648214FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F648114FB2964005E58EF /* FBMediaViewerItemLoaderLocal.m */; };
 		4C280F4314F4B46400DB9916 /* FBMediaViewerRendererWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */; };
 		4C280F4E14F4C9B700DB9916 /* image01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C280F4614F4C9B700DB9916 /* image01.jpg */; };
+		4C528B5716D74DAB00E72445 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C528B5616D74DAB00E72445 /* QuartzCore.framework */; };
 		4C795C0B14F5DD38003EDA40 /* sample.doc in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0814F5DD38003EDA40 /* sample.doc */; };
 		4C795C0C14F5DD38003EDA40 /* sample.xls in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0914F5DD38003EDA40 /* sample.xls */; };
 		4C795C0D14F5DD38003EDA40 /* sample.mov in Resources */ = {isa = PBXBuildFile; fileRef = 4C795C0A14F5DD38003EDA40 /* sample.mov */; };
@@ -51,6 +52,7 @@
 		4C280F4114F4B46400DB9916 /* FBMediaViewerRendererWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMediaViewerRendererWebView.h; sourceTree = "<group>"; };
 		4C280F4214F4B46400DB9916 /* FBMediaViewerRendererWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMediaViewerRendererWebView.m; sourceTree = "<group>"; };
 		4C280F4614F4C9B700DB9916 /* image01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image01.jpg; sourceTree = "<group>"; };
+		4C528B5616D74DAB00E72445 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4C795C0814F5DD38003EDA40 /* sample.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.doc; sourceTree = "<group>"; };
 		4C795C0914F5DD38003EDA40 /* sample.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.xls; sourceTree = "<group>"; };
 		4C795C0A14F5DD38003EDA40 /* sample.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample.mov; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C528B5716D74DAB00E72445 /* QuartzCore.framework in Frameworks */,
 				4CA90DB4165E02BA00D91B8B /* MediaPlayer.framework in Frameworks */,
 				4C85160B14F37F7A006564FE /* UIKit.framework in Frameworks */,
 				4C85160D14F37F7B006564FE /* Foundation.framework in Frameworks */,
@@ -173,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				4CCD5BF616635456000794D5 /* Default-568h@2x.png */,
-				4CA90DB3165E02BA00D91B8B /* MediaPlayer.framework */,
 				4C795C7D14F61FDF003EDA40 /* README.txt */,
 				4C85162A14F37FD9006564FE /* FBMediaViewer */,
 				4C85161014F37F7B006564FE /* Sample Program */,
@@ -193,6 +195,8 @@
 		4C85160914F37F7A006564FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CA90DB3165E02BA00D91B8B /* MediaPlayer.framework */,
+				4C528B5616D74DAB00E72445 /* QuartzCore.framework */,
 				4C85160A14F37F7A006564FE /* UIKit.framework */,
 				4C85160C14F37F7A006564FE /* Foundation.framework */,
 				4C85160E14F37F7B006564FE /* CoreGraphics.framework */,
@@ -283,7 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FBMediaViewer;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 4C85160014F37F7A006564FE /* Build configuration list for PBXProject "FBMediaViewer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -387,6 +391,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -413,6 +421,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

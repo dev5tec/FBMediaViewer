@@ -14,6 +14,7 @@
 		</array>
 		<key>FBMediaViewerRendererImageView</key>
 		<array>
+			<string>image</string>
 			<string>png</string>
 			<string>jpg</string>
 			<string>gif</string>

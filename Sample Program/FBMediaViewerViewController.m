@@ -32,6 +32,9 @@
     
     self.items = [NSMutableArray array];
     
+    url = [[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil];
+    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
+    
     url = [[NSBundle mainBundle] URLForResource:@"sample_small.jpg" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
 
@@ -47,15 +50,13 @@
     url = [[NSBundle mainBundle] URLForResource:@"sample.xls" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
 
-    url = [[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil];
-    [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
-
 //    [self.items addObject:[[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil]];
 //    [self.items addObject:[FBGenericMediaItem genericMediaItemWithURL:url]];
 
     self.contentLoader = [FBMediaViewerItemLoaderLocal new];
     self.mediaViewerView.itemLoader = self.contentLoader;
     [self.mediaViewerView reloadData];
+    self.mediaViewerView.pageControlPosition = FBMediaViewerViewPageControllerPositionTop;
 }
 
 - (void)viewDidUnload

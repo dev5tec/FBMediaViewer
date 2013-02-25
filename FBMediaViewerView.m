@@ -19,6 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "FBMediaViewerView.h"
 #import "FBMediaViewerInnerView.h"
@@ -29,6 +30,7 @@
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_MARGIN_HEIGHT	50
 #define FB_MEDIA_VIEWER_VIEW_DEFAULT_MARGIN_WIDTH_RATE	0.2
 
+#define FB_MEDIA_VIEWER_VIEW_DEFAULT_TRANSITION_DURATION	0.75
 
 #define FB_MEDIA_VIEWER_VIEW_NUMBER_OF_INNER_VIEW 3
 #define FB_MEDIA_VIEWER_VIEW_LENGTH_FROM_CENTER ((FB_MEDIA_VIEWER_VIEW_NUMBER_OF_INNER_VIEW-1)/2)
@@ -43,6 +45,8 @@
 @property (nonatomic, assign) CGSize spacing;
 @property (nonatomic, assign) BOOL animatingWithScrolling;
 @property (nonatomic, assign) CGSize previousFrameSize;
+@property (nonatomic, strong) UIPageControl* pageControl;
+@property (nonatomic, strong) FBMediaViewerInnerView* transitionInnerView;
 
 @end
 
@@ -118,6 +122,17 @@
 	}
 }
 
+- (FBMediaViewerInnerView*)_innerViewWithFrame:(CGRect)innerViewFrame
+{
+    FBMediaViewerInnerView* innerView =
+    [[FBMediaViewerInnerView alloc] initWithMediaViewerView:self
+                                                      frame:innerViewFrame];
+    innerView.clipsToBounds = YES;
+    innerView.backgroundColor = self.backgroundColor;
+    
+    return innerView;
+}
+
 
 - (void)_setupSubViews
 {	
@@ -129,13 +144,13 @@
 
 	// setup self view
 	//-------------------------
-	self.autoresizingMask =
-        UIViewAutoresizingFlexibleLeftMargin  |
-        UIViewAutoresizingFlexibleWidth       |
-        UIViewAutoresizingFlexibleRightMargin |
-        UIViewAutoresizingFlexibleTopMargin   |
-        UIViewAutoresizingFlexibleHeight      |
-        UIViewAutoresizingFlexibleBottomMargin;
+//	self.autoresizingMask =
+//        UIViewAutoresizingFlexibleLeftMargin  |
+//        UIViewAutoresizingFlexibleWidth       |
+//        UIViewAutoresizingFlexibleRightMargin |
+//        UIViewAutoresizingFlexibleTopMargin   |
+//        UIViewAutoresizingFlexibleHeight      |
+//        UIViewAutoresizingFlexibleBottomMargin;
 	self.clipsToBounds = YES;
 	
 	
@@ -166,17 +181,37 @@
     
 	for (int i=0; i < FB_MEDIA_VIEWER_VIEW_NUMBER_OF_INNER_VIEW; i++) {
 		
-		FBMediaViewerInnerView* innerView =
-            [[FBMediaViewerInnerView alloc] initWithMediaViewerView:self
-                                                              frame:innerViewFrame];
-		innerView.clipsToBounds = YES;
-		innerView.backgroundColor = self.backgroundColor;
-
+		FBMediaViewerInnerView* innerView = [self _innerViewWithFrame:innerViewFrame];
 		[self.baseScrollView addSubview:innerView];
 		[self.innerViews addObject:innerView];
 	}
 	[self _layoutInnerViews];
-}	
+    
+    
+    // setup temporary view for slideshow transition
+	self.transitionInnerView = [self _innerViewWithFrame:innerViewFrame];
+	self.transitionInnerView.hidden = YES;
+	[self.baseScrollView addSubview:self.transitionInnerView];
+    
+    
+    // setup page control
+	self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
+	self.pageControl.autoresizingMask =
+        UIViewAutoresizingFlexibleLeftMargin  |
+        UIViewAutoresizingFlexibleWidth       |
+        UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleTopMargin   |
+        UIViewAutoresizingFlexibleHeight      |
+        UIViewAutoresizingFlexibleBottomMargin;
+	self.pageControl.hidesForSinglePage = NO;
+	[self.pageControl addTarget:self
+						 action:@selector(_pageControlDidChange:)
+			   forControlEvents:UIControlEventValueChanged];
+	[self addSubview:self.pageControl];
+    
+    // re-layout
+    self.pageControlPosition = FBMediaViewerViewPageControllerPositionTop;
+}
 
 
 - (void)_layoutSubviewsWithSizeChecking:(BOOL)checking animated:(BOOL)animated
@@ -219,6 +254,13 @@
 {
     return [self.innerViews objectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW];
 }
+
+
+-(void)_pageControlDidChange:(id)sender
+{
+    [self moveToIndex:self.pageControl.currentPage animated:YES];
+}
+
 
 #pragma mark -
 #pragma mark Basics
@@ -330,7 +372,8 @@
                 self.contentOffsetIndex++;
                 [self _scrollToRight];
                 [self._currentInnerView willAppear];
-            }			
+                self.pageControl.currentPage = self.currentIndex;
+            }
 		} else {
             if (self.currentIndex >= 1) {
                 [self._currentInnerView willDisAppear];
@@ -338,6 +381,7 @@
                 self.contentOffsetIndex--;
                 [self _scrollToLeft];
                 [self._currentInnerView willAppear];
+                self.pageControl.currentPage = self.currentIndex;
             }
 		}
 	}
@@ -360,6 +404,52 @@
     }
 }
 
+- (void)_setPageControlHidden:(BOOL)hidden
+{
+    CGFloat alpha = hidden ? 0.0 : 1.0;
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.pageControl.alpha = alpha;
+                     }];
+}
+
+- (void)_refreshPageControlPostion
+{
+    CGFloat y;
+    switch (_pageControlPosition) {
+        case FBMediaViewerViewPageControllerPositionTop:
+            y = 0;
+            break;
+            
+        case FBMediaViewerViewPageControllerPositionBottom:
+        default:
+            y = self.bounds.size.height-FB_MEDIA_VIEWER_VIEW_DEFAULT_MARGIN_HEIGHT;
+            break;
+    }
+	self.pageControl.frame = CGRectMake(0, y + self.pageControlOffset, self.bounds.size.width, FB_MEDIA_VIEWER_VIEW_DEFAULT_MARGIN_HEIGHT);
+}
+
+- (void)setPageControlPosition:(FBMediaViewerViewPageControllerPosition)pageControlPosition
+{
+    _pageControlPosition = pageControlPosition;
+    [self _refreshPageControlPostion];
+}
+
+- (void)setPageControlOffset:(CGFloat)pageControlOffset
+{
+    _pageControlOffset = pageControlOffset;
+    [self _refreshPageControlPostion];
+}
+- (void)setPageControlHidden:(BOOL)hidden
+{
+	_pageControlHidden = hidden;
+    if ([self _numberOfItems] <= 1) {
+        [self _setPageControlHidden:YES];
+    } else {
+        [self _setPageControlHidden:hidden];
+    }
+}
+
 
 #pragma mark -
 #pragma mark API
@@ -378,6 +468,15 @@
 		[self _setItemAtIndex:self.currentIndex + index - FB_MEDIA_VIEWER_VIEW_LENGTH_FROM_CENTER
                   toInnerView:[self.innerViews objectAtIndex:index]];
 	}
+    
+    self.pageControl.numberOfPages = numberOfItems;
+	self.pageControl.currentPage = self.currentIndex;
+    
+    if (numberOfItems <= 1) {
+        [self _setPageControlHidden:YES];
+    } else {
+        [self _setPageControlHidden:self.pageControlHidden];
+    }
 }
 
 - (void)reloadCurrentItemWithMode:(FBMeditViewerItemLoaderMode)mode
@@ -401,7 +500,8 @@
     
 	self.currentIndex = index;
 	self.contentOffsetIndex = index;
-	
+    self.pageControl.currentPage = index;
+
 	for (int i=0; i < FB_MEDIA_VIEWER_VIEW_NUMBER_OF_INNER_VIEW; i++) {
         [self _setItemAtIndex:self.currentIndex + i - FB_MEDIA_VIEWER_VIEW_LENGTH_FROM_CENTER
                   toInnerView:[self.innerViews objectAtIndex:i]];
@@ -420,6 +520,7 @@
 	
 	self.currentIndex--;
 	self.contentOffsetIndex--;
+	self.pageControl.currentPage--;
 	[self _scrollToLeft];
 	[self _movePage:animated];
 }
@@ -433,13 +534,71 @@
     
 	self.currentIndex++;
 	self.contentOffsetIndex++;
+	self.pageControl.currentPage++;
 	[self _scrollToRight];
 	[self _movePage:animated];
 }
 
+- (void)moveToLastItemAnimated:(BOOL)animated
+{
+    [self moveToIndex:9999999 animated:animated];
+}
+
+
 - (id <FBMediaViewerItem>)currentItem
 {
     return self._currentInnerView.mediaViewerItem;
+}
+
+
+- (void)removeCurrentIndexAimated:(BOOL)animated
+{
+	NSInteger numberOfItems = [self _numberOfItems];
+    
+	NSInteger transitionIndex = self.currentIndex;
+	if (numberOfItems == 0) {
+		transitionIndex = -1;
+	} else if (numberOfItems == self.currentIndex) {
+		transitionIndex--;
+	} else {
+	}
+	
+	// [1] setup transitionView
+    [self _setItemAtIndex:transitionIndex
+              toInnerView:self.transitionInnerView];
+	
+	FBMediaViewerInnerView* currentInnerScrollView =
+        [self.innerViews objectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW];
+	
+	self.transitionInnerView.frame = currentInnerScrollView.frame;
+	
+	// [2] do transition
+    if (animated) {
+        CATransition* transition = [CATransition animation];
+        transition.duration = FB_MEDIA_VIEWER_VIEW_DEFAULT_TRANSITION_DURATION;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionFade;
+        //		transition.delegate = self;
+        
+        [self.baseScrollView.layer addAnimation:transition forKey:nil];
+    }
+    
+    currentInnerScrollView.hidden = YES;
+    self.transitionInnerView.hidden = NO;
+    
+    [self.innerViews replaceObjectAtIndex:FB_MEDIA_VIEWER_VIEW_INDEX_OF_CURRENT_INNER_VIEW
+                                     withObject:self.transitionInnerView];
+    self.transitionInnerView = currentInnerScrollView;
+	
+	// [3] re-layout subviews
+	[self _layoutSubviewsWithSizeChecking:NO animated:NO];
+    
+    // [4] notify
+    if (numberOfItems &&
+        [self.delegate respondsToSelector:@selector(mediaViewerView:didMoveToIndex:)]) {
+        [self.delegate mediaViewerView:self didMoveToIndex:self.currentIndex];
+    }
+
 }
 
 

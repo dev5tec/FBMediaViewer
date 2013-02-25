@@ -130,27 +130,31 @@
 
 - (void)loadWithMode:(FBMeditViewerItemLoaderMode)mode
 {
-    self.loadingDialogView.title = self.mediaViewerItem.name;
-    self.loadingDialogView.progress = 0.0f;
-    self.loadingDialogView.hidden = NO;
-
     [self.renderer clear];
 
-    [self.mediaViewerView.itemLoader
-     loadWithMediaViewerItem:self.mediaViewerItem
-     mode:mode
-     loading:^(NSUInteger loadedSize) {
-         self.loadingDialogView.progress = (CGFloat)loadedSize / (CGFloat)self.mediaViewerItem.size;
-     }
-     completion:^(BOOL canceled) {
-         if (!canceled) {
-             self.loadingDialogView.hidden = YES;
-             [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
+    if (self.mediaViewerView.itemLoader) {
+        self.loadingDialogView.title = self.mediaViewerItem.name;
+        self.loadingDialogView.progress = 0.0f;
+        self.loadingDialogView.hidden = NO;
+
+        [self.mediaViewerView.itemLoader
+         loadWithMediaViewerItem:self.mediaViewerItem
+         mode:mode
+         loading:^(NSUInteger loadedSize) {
+             self.loadingDialogView.progress = (CGFloat)loadedSize / (CGFloat)self.mediaViewerItem.size;
          }
-     }
-     failed:^{
-         
-     }];
+         completion:^(BOOL canceled) {
+             if (!canceled) {
+                 self.loadingDialogView.hidden = YES;
+                 [self.renderer renderContentOfURL:self.mediaViewerItem.localFileURL];
+             }
+         }
+         failed:^{
+             
+         }];
+    } else {
+        // nothing
+    }
 }
 
 - (void)cancel
