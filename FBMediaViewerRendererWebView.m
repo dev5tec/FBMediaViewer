@@ -163,11 +163,15 @@
     //    [self loadRequest:[NSURLRequest requestWithURL:blankURL]];
 }
 
-- (void)reset
+- (void)willAppear
 {
     // TODO: should be implemented
 }
 
+- (void)willDisAppear
+{
+    // TODO: should be implemented
+}
 
 
 @end

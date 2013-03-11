@@ -26,7 +26,8 @@
 
 // API
 - (void)renderContentOfURL:(NSURL*)url;
-- (void)reset;
+- (void)willDisAppear;
+- (void)willAppear;
 - (void)clear;
 
 @end

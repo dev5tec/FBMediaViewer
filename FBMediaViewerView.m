@@ -356,6 +356,10 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (!scrollView.dragging) {
+        return;
+    }
+    
 	CGFloat position = scrollView.contentOffset.x / scrollView.bounds.size.width;
 	CGFloat delta = position - (CGFloat)self.currentIndex;
 	

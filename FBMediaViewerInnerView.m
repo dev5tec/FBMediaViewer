@@ -169,10 +169,11 @@
         [self loadWithMode:FBMeditViewerItemLoaderModeLoadFromCache];
         self.displaying = YES;
     }
+    [self.renderer willAppear];
 }
 - (void)willDisAppear
 {
-    [self.renderer reset];
+    [self.renderer willDisAppear];
 }
 
 @end

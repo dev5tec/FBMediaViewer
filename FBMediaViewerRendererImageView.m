@@ -82,7 +82,12 @@
     self.imageView.image = nil;
 }
 
-- (void)reset
+- (void)willAppear
+{
+    // TODO: should be implemented
+}
+
+- (void)willDisAppear
 {
     [self setZoomScale:1.0 animated:NO];
 }
