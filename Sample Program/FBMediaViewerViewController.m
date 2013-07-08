@@ -35,7 +35,7 @@
     url = [[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
     
-    url = [[NSBundle mainBundle] URLForResource:@"sample.mov" withExtension:nil];
+    url = [[NSBundle mainBundle] URLForResource:@"sample2.mov" withExtension:nil];
     [self.items addObject:[FBGenericMediaViewerItem genericMediaItemWithURL:url]];
 
     url = [[NSBundle mainBundle] URLForResource:@"sample_small.jpg" withExtension:nil];

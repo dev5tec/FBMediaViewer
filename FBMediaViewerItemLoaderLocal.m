@@ -40,7 +40,7 @@
 
 - (void)cancelWithMediaViewerItem:(id <FBMediaViewerItem>)mediaViewerItem
 {
-    NSLog(@"%s|canceled: %@", __PRETTY_FUNCTION__, mediaViewerItem);
+//    NSLog(@"%s|canceled: %@", __PRETTY_FUNCTION__, mediaViewerItem);
 }
 
 - (void)cancelAllItems

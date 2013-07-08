@@ -25,7 +25,7 @@
 
 @interface FBMediaViewerRendererMovieView()
 @property (nonatomic, strong) MPMoviePlayerController* moviePlayerController;
-@property (nonatomic, weak) UIImageView* imageView;
+@property (nonatomic, assign) UIImageView* imageView;
 @end
 
 @implementation FBMediaViewerRendererMovieView
@@ -56,6 +56,7 @@
     [self _fadeImage:YES];
 }
 
+
 #pragma mark -
 #pragma mark Basics
 
@@ -67,10 +68,10 @@
 
         self.moviePlayerController = [[MPMoviePlayerController alloc] init];
         self.moviePlayerController.shouldAutoplay = NO;
-        [self.moviePlayerController.view setFrame:frame];
+        [self.moviePlayerController.view setFrame:self.bounds];
 		self.moviePlayerController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.moviePlayerController.view];
-        
+
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
 		imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -80,13 +81,13 @@
     return self;
 }
 
+
 #pragma mark -
 #pragma mark FBMediaViewerRenderer
 
 - (void)renderContentOfURL:(NSURL*)url
 {
     self.moviePlayerController.contentURL = url;
-    self.imageView.image = [self.moviePlayerController thumbnailImageAtTime:0.0 timeOption:MPMovieTimeOptionExact];
 }
 
 - (void)clear
@@ -96,8 +97,8 @@
 
 - (void)willAppear
 {
-    [self performSelector:@selector(_fadeImageOut) withObject:nil afterDelay:0.2];
     [self.moviePlayerController prepareToPlay];
+    [self performSelector:@selector(_fadeImageOut) withObject:nil afterDelay:0.2];
 }
 
 - (void)willDisAppear
@@ -106,7 +107,6 @@
     [self.moviePlayerController pause];
     self.imageView.image = [self.moviePlayerController thumbnailImageAtTime:self.moviePlayerController.currentPlaybackTime
                                                                  timeOption:MPMovieTimeOptionExact];
-//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
 }
 
 
